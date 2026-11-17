@@ -2,6 +2,37 @@
 
 日期：2026-11-17。本记录描述实际执行结果，不代表所有后续维护动作都已完成。
 
+## 示例补充：各模块（最新）
+
+2026-11-17：按「示例服务于概念理解」的原则，给除 ReAct 外的笔记补上示例，优先取一手文档并标注来源。
+
+Agent 基础与能力扩展：
+
+- Agent 与 Function Calling：Claude 接口的 `tool_use` 与 `tool_result` 往返 JSON，区分一次调用与 Agent 控制路径。
+- 工具 Schema：官方 `get_weather` 工具定义，拆解 `name`、`description`、`input_schema` 的分工。
+- Agent Loop：依据客户端工具往返写的最小循环（TypeScript），含 `stop_reason` 判断与 `MAX_TURNS` 兜底。
+- Subagent：Claude Code 子代理的 Markdown 定义示例，说明 frontmatter 与「只收到自己的系统提示」。
+- MCP：`initialize`、`notifications/initialized`、`tools/list`、`tools/call` 的 JSON-RPC 消息，注明省略字段。
+- Skill：`pdf-processing` 的 SKILL.md 示例（外层四反引号），说明元数据先加载、正文按需读取。
+
+上下文、工作流与反思：
+
+- 上下文工程：自拟进度笔记模板，对应压缩与结构化笔记思路。
+- Prompt / Context / Harness：长任务的文件布局（功能清单、`claude-progress.txt`、`init.sh`），文件名标注为示例。
+- Superpowers：一次「搜索空状态」请求的完整过程，展示各环节留下的产物。
+- SDD：Spec Kit 的 `specs/<分支名>/` 目录结构，规范、计划与任务分开保存。
+- TDD：自拟去重示例，按 Red—Green—Refactor 给出测试与最小实现。
+- GSD：`STATE.md` 与 `CONTEXT.md` 的分工与跨会话保留。
+- 认知债与架构债：两个自拟场景，对照「缺理解」与「缺结构」。
+
+自拟或节选的示例均标明性质；来源记录补充对应章节；导图为 6 张、16 篇、65 个知识点。
+
+实际验证：
+
+- `npm run check`：0 错误、0 警告；`npm test`：13 项通过。
+- `npm run build`：25 个 HTML 页面、63 文件清单，锚点与断链检查通过。
+- 页面检查：Agent、Schema、Loop、Subagent、MCP、Skill、上下文、Harness、Superpowers、SDD、TDD、GSD、认知债各页正常渲染，代码块、文件树与嵌套代码块显示正常；截图 `.local/skills-note.png`、`.local/tool-schema-note.png`、`.local/ctx-note.png`、`.local/harness-note.png`。
+
 ## 拆分计划模式（此前）
 
 2026-11-17：把原来合写的「计划模式与 Superpowers」拆成两篇，先讲清计划模式本身，再单独对比。

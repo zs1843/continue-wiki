@@ -40,10 +40,12 @@ slug: knowledge
   - [选择、组织与维护上下文](/notes/context-engineering/)
   - [按需检索与上下文压缩](/notes/context-engineering/#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95)
   - [结构化笔记与子智能体](/notes/context-engineering/#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95)
+  - [用进度笔记跨轮次恢复](/notes/context-engineering/#%E4%B8%80%E4%B8%AA%E9%95%BF%E4%BB%BB%E5%8A%A1%E9%87%8C%E7%9A%84%E5%81%9A%E6%B3%95)
 - [Prompt / Context / Harness](/notes/prompt-context-harness/)
   - [Prompt：表达任务与约束](/notes/prompt-context-harness/#%E4%B8%89%E8%80%85%E5%88%86%E5%88%AB%E5%85%B3%E6%B3%A8%E4%BB%80%E4%B9%88)
   - [Context：当前可用信息](/notes/prompt-context-harness/#%E4%B8%89%E8%80%85%E5%88%86%E5%88%AB%E5%85%B3%E6%B3%A8%E4%BB%80%E4%B9%88)
   - [Harness：执行、验证与恢复](/notes/prompt-context-harness/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83)
+  - [状态必须落盘，上下文会丢](/notes/prompt-context-harness/#%E4%B8%80%E6%AC%A1%E9%95%BF%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BA%A7%E7%89%A9)
 
 ## 能力扩展
 
@@ -75,18 +77,22 @@ slug: knowledge
 - [SDD：规范驱动开发](/notes/spec-driven-development/)
   - [规范持续指导实现](/notes/spec-driven-development/)
   - [行为、边界与验收条件](/notes/spec-driven-development/#%E8%A7%84%E8%8C%83%E9%9C%80%E8%A6%81%E8%A1%A8%E8%BE%BE%E4%BB%80%E4%B9%88)
+  - [规范、计划与任务分开保存](/notes/spec-driven-development/#%E4%B8%80%E6%AC%A1%E8%A7%84%E8%8C%83%E6%94%B9%E5%8A%A8%E7%95%99%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6)
   - [规范、计划与测试相互配合](/notes/spec-driven-development/#%E4%B8%8E%E8%AE%A1%E5%88%92%E5%92%8C%E6%B5%8B%E8%AF%95%E7%9A%84%E5%85%B3%E7%B3%BB)
 - [TDD：测试驱动开发](/notes/test-driven-development/)
   - [Red：测试因缺少行为而失败](/notes/test-driven-development/#red--green--refactor)
   - [Green：实现使测试通过](/notes/test-driven-development/#red--green--refactor)
   - [Refactor：保持通过并整理结构](/notes/test-driven-development/#red--green--refactor)
+  - [先确认测试失败再实现](/notes/test-driven-development/#%E4%B8%80%E6%AC%A1%E5%B0%8F%E7%9A%84%E5%BE%AA%E7%8E%AF)
 - [Superpowers 工作流](/notes/superpowers/)
   - [可组合的 Skills](/notes/superpowers/)
   - [需求 → 设计 → 计划 → 执行与检查](/notes/superpowers/#%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%A6%82%E4%BD%95%E7%BB%84%E7%BB%87)
+  - [每步留下可检查的产物](/notes/superpowers/#%E4%B8%80%E6%AC%A1%E8%AF%B7%E6%B1%82%E6%80%8E%E4%B9%88%E8%B5%B0)
 - [GSD 与阶段化交付](/notes/gsd/)
   - [Discuss → Plan → Execute → Verify → Ship](/notes/gsd/#%E9%98%B6%E6%AE%B5%E5%BE%AA%E7%8E%AF)
   - [独立上下文承担局部任务](/notes/gsd/#%E9%98%B6%E6%AE%B5%E5%BE%AA%E7%8E%AF)
   - [STATE.md / CONTEXT.md 保存状态](/notes/gsd/#%E9%98%B6%E6%AE%B5%E5%BE%AA%E7%8E%AF)
+  - [状态与上下文分别落盘](/notes/gsd/#%E4%B8%80%E4%B8%AA%E9%98%B6%E6%AE%B5%E9%87%8C%E7%95%99%E4%B8%8B%E7%9A%84%E6%9D%90%E6%96%99)
 
 ## 工程反思
 
@@ -94,3 +100,4 @@ slug: knowledge
   - [认知债：共享理解退化](/notes/cognitive-and-architecture-debt/#%E8%AE%A4%E7%9F%A5%E5%80%BA%E7%90%86%E8%A7%A3%E6%B2%A1%E6%9C%89%E8%B7%9F%E4%B8%8A%E7%B3%BB%E7%BB%9F)
   - [架构债：结构增加后续修改成本](/notes/cognitive-and-architecture-debt/#%E6%9E%B6%E6%9E%84%E5%80%BA%E7%BB%93%E6%9E%84%E5%A2%9E%E5%8A%A0%E4%BA%86%E6%9C%AA%E6%9D%A5%E4%BF%AE%E6%94%B9%E6%88%90%E6%9C%AC)
   - [补充理解与改善结构处理不同问题](/notes/cognitive-and-architecture-debt/#%E4%B8%A4%E8%80%85%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%8C%BA%E5%88%86)
+  - [缺理解与缺结构是两类问题](/notes/cognitive-and-architecture-debt/#%E4%B8%A4%E4%B8%AA%E5%9C%BA%E6%99%AF)

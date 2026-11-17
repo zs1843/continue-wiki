@@ -11,6 +11,8 @@ mindmap:
     heading: "red--green--refactor"
   - label: "Refactor：保持通过并整理结构"
     heading: "red--green--refactor"
+  - label: "先确认测试失败再实现"
+    heading: "一次小的循环"
 ---
 
 **TDD（Test-Driven Development，测试驱动开发）** 是一种用测试推动软件设计与实现的方法：先为下一小步行为编写测试，再补足实现使测试通过，最后在测试保持通过的前提下重构。[1]
@@ -28,6 +30,34 @@ mindmap:
 TDD 的关键是测试参与开发过程。开发结束后补写测试仍然有价值，但不能仅凭存在测试文件，就判断已经采用 TDD。
 
 [SDD](/notes/spec-driven-development/)把更高层的需求写成规范，TDD 则可以用来推进其中的具体行为。测试能够验证已定义的行为，但仍不能代替对系统结构与业务的理解，后者与[认知债](/notes/cognitive-and-architecture-debt/)有关。
+
+## 一次小的循环
+
+用「数组去重」演示三个阶段（示例自拟，代码为示意）：[1]
+
+```js
+// 1. Red：先写期望行为，运行应失败（函数尚不存在）
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { dedupe } from './dedupe.js';
+
+test('重复元素只保留第一次出现', () => {
+  assert.deepEqual(dedupe([1, 2, 1, 3, 2]), [1, 2, 3]);
+});
+```
+
+```js
+// 2. Green：最小实现，让测试通过
+export function dedupe(items) {
+  return [...new Set(items)];
+}
+
+// 3. Refactor：测试保持通过的前提下整理结构，
+//    例如把「保留第一次出现」的判断抽出来，
+//    为将来支持对象数组留出空间。
+```
+
+关键在顺序和确认：先看到测试失败，再补实现；Green 之后先跑测试，再做重构；重构期间测试始终通过。若先写实现再补测试，看到的是「已经通过」，就失去了「测试能发现问题」的证据。
 
 ## 参考
 

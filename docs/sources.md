@@ -11,14 +11,14 @@
 | ReAct | [原论文 arXiv v3](https://arxiv.org/abs/2210.03629v3)，2023-03-10（ICLR 2023 正式版）：第 2 节 thought 与动作空间、第 3 节 PaLM-540B 对照数据与 HotpotQA 失败类型标注、第 4 节 ALFWorld／WebShop 结果、失败与微调说明；正文检索轨迹为按论文动作格式自拟 |
 | MCP | [Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)、[Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[Lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle)、[Prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts)、[Resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)，固定参考 2025-11-25 版：角色、初始化、工具发现和调用、提示模板与资源的列举读取；正文流程图按所提供示意图重绘，接口名称按同版本规范核对 |
 | Skill | [Agent Skills Specification](https://agentskills.io/specification)：目录、SKILL.md 格式与渐进加载；[Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)：简洁、描述写法、示例与模板、避免的写法，`pdf-processing` 示例；[Agent Skills 概览](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)：SKILL.md 结构与加载层级。四条实践为整理时归纳，逐条对应指南内容 |
-| 上下文工程 | [Effective context engineering](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)：上下文范围、检索、压缩、结构化笔记和子代理 |
-| Prompt / Context / Harness | 上述上下文文章与 [Effective harnesses](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)：指令、信息与运行机制的区分，跨会话任务实例；正文对照表为解释性归纳 |
+| 上下文工程 | [Effective context engineering](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)：上下文范围、检索、压缩、结构化笔记和子代理；正文进度笔记模板为自拟示例 |
+| Prompt / Context / Harness | 上述上下文文章与 [Effective harnesses](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)：指令、信息与运行机制的区分，跨会话任务实例、功能清单与 `claude-progress.txt`／`init.sh`；正文对照表为解释性归纳，文件名为示例 |
 | 计划模式 | Claude Code，[Choose a permission mode](https://code.claude.com/docs/en/permission-modes)：plan mode 的行为、进入方式、批准选项与边界；2026-11-17 读取，产品行为仅对应 Claude Code |
 | 计划模式与 Superpowers 的对比 | 上述权限模式说明与 [Superpowers README](https://github.com/obra/superpowers)：方法集范围与工作流；对比维度为整理时的归纳 |
-| Superpowers | 同一 README：可组合 Skills、需求探索、计划、执行和检查；不记录未核实的包版本 |
-| GSD | [原仓库迁移说明](https://github.com/gsd-build/get-shit-done)、[GSD Core README](https://github.com/open-gsd/gsd-core)：阶段循环、子智能体与状态材料 |
-| SDD | [Spec Kit 方法说明](https://github.com/github/spec-kit/blob/main/spec-driven.md)与 [README](https://github.com/github/spec-kit)：规范作为持续开发依据，作为具体方法实例 |
-| TDD | [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)：测试列表与 Red–Green–Refactor |
+| Superpowers | 同一 README：可组合 Skills、需求探索、计划、执行和检查；正文请求示例为自拟，不记录未核实的包版本 |
+| GSD | [原仓库迁移说明](https://github.com/gsd-build/get-shit-done)、[GSD Core README](https://github.com/open-gsd/gsd-core)：阶段循环、子智能体与 `STATE.md`／`CONTEXT.md` 等状态材料 |
+| SDD | [Spec Kit 方法说明](https://github.com/github/spec-kit/blob/main/spec-driven.md)与 [README](https://github.com/github/spec-kit)：规范作为持续开发依据、`specs/<分支名>/` 下的 spec／plan／tasks 结构，作为具体方法实例 |
+| TDD | [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)：测试列表与 Red–Green–Refactor；正文去重示例为自拟 |
 | 认知债与架构债 | Margaret-Anne Storey，[From Technical Debt to Cognitive and Intent Debt](https://arxiv.org/abs/2603.22106v4)，v4，2026-04-06 摘要：团队／项目语境的认知债；[SEI Architectural Technical Debt Library](https://www.sei.cmu.edu/library/architectural-technical-debt-library/)：架构技术债定义；[Technical Debt](https://martinfowler.com/bliki/TechnicalDebt.html)：后续修改成本 |
 
 示例均用于解释概念；未标为来源案例的内容不归于原作者，也不表示用户实际执行过。文末参考中的书目、版本和章节只记录实际可核实的信息。
