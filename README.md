@@ -10,6 +10,8 @@
 
 原始记录默认仅在本地保留，已加入 Git 忽略，不会被自动导入、构建或发布。后续补充资料后，仍需整理为 Markdown 并确认发布状态。Git 仓库、依赖和已有产物随工程完整保留，无需因本次迁移重新安装依赖。
 
+远程仓库位于 <https://github.com/zs1843/continue-wiki>，推送到 `main` 会触发 GitHub Actions 构建、测试并发布站点。
+
 ## 本地运行
 
 需要 Node.js 22.12+（建议通过 `.nvmrc` 使用 Node 22）。仓库锁定 Astro 6，并保留 `package-lock.json` 以便复现构建。
