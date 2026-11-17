@@ -10,6 +10,20 @@ SSH 发布需要远端有 Python 3.9+，本地或 CI 有 SSH、SCP、tar、Node.
 
 轻量应用服务器等云主机还需在控制台放行 22、80、443 端口；云防火墙与系统内防火墙都放行后，HTTPS 才能完成证书签发与访问。
 
+## 当前线上环境
+
+| 项 | 值 |
+| --- | --- |
+| 站点地址 | `https://wiki.zs1843.cn/` |
+| DNS | A 记录指向 `49.235.170.155`，TTL 600 |
+| 服务器 | 宝塔面板（OpenCloudOS 9），与现有 nginx 站点共存 |
+| 部署根目录 | `/www/wwwroot/ai-wiki`，站点根目录指向其 `current` 链接 |
+| 部署账户 | `deploy`，仅密钥登录 |
+| 自动发布 | GitHub Actions `.github/workflows/deploy.yml`，触发分支 `main` |
+| 证书 | Let's Encrypt，宝塔自动续签 |
+
+换机器或换域名时按本文的「一次性配置」和「换机器迁移」执行。线上打不开先查 DNS：解析未过期的网络会继续连旧地址，等 TTL 过期，或临时改公共 DNS、用 `curl --resolve` 验证真实站点。
+
 ## 一次性配置
 
 1. 给 wiki 准备一个独立子域名，解析到放置现有网站的服务器。
@@ -120,13 +134,17 @@ ssh-keygen -t ed25519 -C "github-actions@ai-wiki" -f ~/.ssh/ai-wiki-deploy -N ""
 # 私钥 ~/.ssh/ai-wiki-deploy 的内容填进 GitHub Secret SSH_PRIVATE_KEY
 ```
 
-服务器上安装公钥（`deploy` 账户没有密码，只允许密钥登录）：
+公钥在**本机**生成，只需把公钥送到服务器，私钥永远不离开本机。用已有 root 通道写入授权文件：
 
 ```sh
-install -d -m 700 -o deploy -g deploy /home/deploy/.ssh
-cat ai-wiki-deploy.pub >> /home/deploy/.ssh/authorized_keys
-chown deploy:deploy /home/deploy/.ssh/authorized_keys && chmod 600 /home/deploy/.ssh/authorized_keys
+cat ~/.ssh/ai-wiki-deploy.pub | ssh root@49.235.170.155 '
+  install -d -m 700 -o deploy -g deploy /home/deploy/.ssh &&
+  tee -a /home/deploy/.ssh/authorized_keys >/dev/null &&
+  chown deploy:deploy /home/deploy/.ssh/authorized_keys &&
+  chmod 600 /home/deploy/.ssh/authorized_keys'
 ```
+
+注意：`deploy` 用户若已存在，就先确认它是可登录的普通账户（`getent passwd deploy`，登录 shell 不是 `/sbin/nologin`）；如果它其实是某个服务账户，另建 `aiwiki` 用户并在所有命令里替换。服务器还需要 `python3` 3.9+（`python3 --version`）。
 
 3. 核对主机指纹后准备 `known_hosts` 内容：`ssh-keyscan -t ed25519 49.235.170.155`，与服务器上 `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` 的输出对照。发布脚本启用严格主机校验，不能用未经核对的主机密钥。
 

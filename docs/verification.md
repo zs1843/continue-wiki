@@ -1,8 +1,37 @@
 # 首版验证记录
 
-日期：2026-11-17。本记录描述实际执行结果，不代表线上部署已经完成。
+日期：2026-11-17。本记录描述实际执行结果，不代表所有后续维护动作都已完成。
 
-## 正文配图与 MCP 流程图（最新）
+## 笔记深化：ReAct（最新）
+
+2026-11-17：按原论文 v3 重写 ReAct 笔记，从小节标题到机制、对照数据、失败模式都有对应来源。补充的内容包括：thought 与动作空间 A ∪ L 的形式化区别（thought 不产生 observation）、thought 的几类用途与少样本示例数量、维基百科检索的三个动作与按该格式自拟的轨迹示例、PaLM-540B 在 HotpotQA／FEVER 的对照数据、失败类型标注（推理错误 47%、检索无效 23%、幻觉 0% 对 CoT 56%）、ALFWorld／WebShop 的绝对提升、小模型微调与步数代价等边界，并说明与 Function Calling、Agent Loop、工具 Schema、上下文工程、计划模式的关系。正文中自拟轨迹已标注不是论文案例。
+
+同步维护：
+
+- `mindmap` 改为 4 个节点，分别指向「推理与行动怎样交替」「一个简化示例」「与 CoT 和 Act 的对比」「边界与失败模式」，`npm run maps` 重新生成 5 张导图、46 个关键知识点。
+- 来源记录中的 ReAct 行补充到具体章节与数据，并注明轨迹为自拟。
+
+实际验证：
+
+- `npm run check`：内容检查与导图同步检查通过，Astro 0 错误、0 警告。
+- `npm test`：13 项通过。
+- `npm run build`：23 个 HTML 页面、60 个文件的发布清单，产物断链与锚点检查通过；标题锚点与导图链接一致。
+- 浏览器检查 `/notes/react/`：标题层级、对照表、代码块和站内链接显示正常，导图节点可跳转对应章节。截图：`.local/react-note-desktop.png`。
+
+## GitHub Actions 自动发布与上线（此前）
+
+2026-11-17：首次提交 `f7e0bf1` 推送到 GitHub（`zs1843/continue-wiki`）。`main` 推送触发 `.github/workflows/deploy.yml`：检出源码、`npm ci`、`npm test`，再通过 SSH 调用 `scripts/ci-publish.sh`，在服务器 `/www/wwwroot/ai-wiki` 生成 `releases/20261117T064012Z-3164ce72` 并把 `current` 链接切换过去。宝塔站点根目录指向 `current`，Let's Encrypt 为 `wiki.zs1843.cn` 签发证书。
+
+实际核验（绕过尚未刷新的本地 DNS，直接请求上线主机）：
+
+- 发布结构正确：`.ai-wiki-root`、`releases/`、`uploads/`、`current` 链接；`uploads` 已清空。
+- 首页 200（约 14.8 KB），`/notes/mcp/` 200，`/mindmaps/knowledge/` 200，不存在的路径返回 404。
+- `sitemap.xml` 与 `<link rel="canonical">` 都输出 `https://wiki.zs1843.cn`，说明 CI 构建时读取了 `SITE_URL`。
+- `/pagefind/pagefind-entry.json` 与 `pagefind-ui.js` 返回 200，搜索索引随发布上传。
+- TLS 证书 subject 为 `CN=wiki.zs1843.cn`，Let's Encrypt 签发，校验通过。
+- 观察到 DNS 缓存现象：权威解析与国内公共 DNS 已更新，但部分网络（公司 DNS）仍持旧地址，表现为打开超时；不是站点或证书问题。
+
+## 正文配图与 MCP 流程图（此前）
 
 2026-11-17：MCP 笔记新增「初始化、发现与调用」一节，并把用户提供的交互示意图改成可直接放大的 SVG 矢量图 `public/images/mcp-interaction-stages.svg`，按天气查询拆成初始化、发现、执行三个阶段。图中接口名称按 2025-11-25 版规范核对：`initialize`、`notifications/initialized`、`tools/list`、`prompts/list`、`resources/list`、`tools/call`；`get_weather` 是示例工具名。节点内容与对应参考在正文和文末标注。
 
@@ -87,7 +116,8 @@
 
 ## 尚未执行
 
-- 未连接真实服务器，未修改 Web 服务、DNS、证书或现有网站。
-- 未配置远程 Git 仓库和平台 CI；未创建首次提交。
-- 未执行线上 SSH 上传、HTTPS 检查或既有网站共存回归。这些步骤需要实际部署参数。
-- 未指定正式域名时，canonical 不生成，sitemap 为空；部署前通过 `SITE_URL` 生成正式地址。
+- 线上回滚未实战：发布工具已在临时目录演练过回滚，线上尚未真实执行一次。
+- 未配置发布失败通知、站点监控或备份；Actions 失败目前只能靠仓库页面发现。
+- 仓库当前公开可见，尚未转私有；草稿隔离只作用于构建产物，不保护源码仓库。
+- 未在目标手机与办公网络完整走完上线回归，DNS 缓存期间的部分网络仍无法访问。
+- 域名备案、DNS 解析和服务器计费由用户自行维护。

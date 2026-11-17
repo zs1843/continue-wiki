@@ -8,7 +8,7 @@
 | 工具 Schema | [JSON Schema Object](https://json-schema.org/understanding-json-schema/reference/object)、[Annotations](https://json-schema.org/understanding-json-schema/reference/annotations)：输入结构与注解；[MCP Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)：工具定义 |
 | Agent Loop | 上述 Tool use 的调用反馈过程与 Building effective agents 的环境反馈、停止条件；正文流程图为机制示意 |
 | Subagent | [Multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)：任务委派、独立上下文和汇总，作为具体系统实例 |
-| ReAct | [原论文 arXiv v3](https://arxiv.org/abs/2210.03629v3)，2023-03-10：推理与行动交替、观察反馈与实验范围 |
+| ReAct | [原论文 arXiv v3](https://arxiv.org/abs/2210.03629v3)，2023-03-10（ICLR 2023 正式版）：第 2 节 thought 与动作空间、第 3 节 PaLM-540B 对照数据与 HotpotQA 失败类型标注、第 4 节 ALFWorld／WebShop 结果、失败与微调说明；正文检索轨迹为按论文动作格式自拟 |
 | MCP | [Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)、[Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[Lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle)、[Prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts)、[Resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)，固定参考 2025-11-25 版：角色、初始化、工具发现和调用、提示模板与资源的列举读取；正文流程图按所提供示意图重绘，接口名称按同版本规范核对 |
 | Skill | [Agent Skills Specification](https://agentskills.io/specification)：目录、SKILL.md 格式和渐进加载 |
 | 上下文工程 | [Effective context engineering](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)：上下文范围、检索、压缩、结构化笔记和子代理 |
