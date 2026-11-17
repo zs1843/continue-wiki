@@ -9,6 +9,8 @@ mindmap:
     heading: "循环如何继续"
   - label: "任务完成与迭代上限"
     heading: "什么时候停止"
+  - label: "stop_reason 决定是否再来一轮"
+    heading: "循环如何继续"
   - label: "执行成功还需要任务验收"
     heading: "什么时候停止"
 ---
@@ -32,6 +34,26 @@ mindmap:
 ```
 
 上面是流程简图，不代表某个框架的接口。以 Claude 的客户端工具为例，模型返回 `tool_use`，应用执行后用 `tool_result` 回传；下一次模型调用便能使用这个结果。[2]
+
+把这段往返写成循环，结构大致如下（依据 Claude 客户端工具的往返格式，省略错误处理与并行工具）：[2]
+
+```ts
+const messages = [{ role: 'user', content: '上海现在气温多少？' }];
+
+for (let turn = 0; turn < MAX_TURNS; turn++) {
+  const response = await client.messages.create({ model, max_tokens: 1024, tools, messages });
+  messages.push({ role: 'assistant', content: response.content });
+
+  // 模型不再请求工具，这一轮就把话说完
+  if (response.stop_reason !== 'tool_use') break;
+
+  // 应用执行工具，把结果作为 tool_result 回传
+  const toolResults = await runTools(response.content);
+  messages.push({ role: 'user', content: toolResults });
+}
+```
+
+循环里真正决定是否继续的，是这一轮响应有没有工具调用请求；`MAX_TURNS` 只是兜底。停止条件还可以包括预算耗尽、用户中断或验收未通过。
 
 ## 什么时候停止
 

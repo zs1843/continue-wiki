@@ -13,6 +13,8 @@ mindmap:
     heading: "工具怎样进入应用"
   - label: "工具调用 tools/call"
     heading: "工具怎样进入应用"
+  - label: "JSON-RPC 的 initialize 与 tools/call"
+    heading: "线路上长什么样"
 ---
 
 **MCP（Model Context Protocol，模型上下文协议）** 是 AI 应用与外部服务交换上下文和能力的开放协议。它规定宿主、客户端与服务器如何连接，并通过协议提供工具、资源和提示模板等能力。[1]
@@ -46,6 +48,36 @@ mindmap:
 能力发现需要按服务器已声明的能力选择：`tools/list` 返回工具定义，`prompts/list` 和 `resources/list` 返回提示模板或资源的元数据列表。获取模板内容、读取资源内容分别使用 `prompts/get` 与 `resources/read`。[2][4][5]
 
 调用工具时，客户端通过 `tools/call` 传入工具名及参数，服务器返回执行结果。图中的 `get_weather` 是天气查询示例工具名。[2]
+
+## 线路上长什么样
+
+前面三段交互在协议里是 JSON-RPC 消息。初始化请求带上客户端支持的版本与能力，服务器用自己的版本和能力回应：[3]
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{"roots":{"listChanged":true}},"clientInfo":{"name":"ExampleClient","version":"1.0.0"}}}
+```
+
+```json
+{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"ExampleServer","version":"1.0.0"}}}
+```
+
+初始化完成后，客户端发一条通知，不需要响应：[3]
+
+```json
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+```
+
+发现和调用是普通请求／响应：`tools/list` 返回工具定义，`tools/call` 传入工具名与参数。[2]
+
+```json
+{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}
+```
+
+```json
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_weather","arguments":{"location":"New York"}}}
+```
+
+示例取自 2025-11-25 版规范，省略了分页游标和部分能力字段。实际实现要按协商后的版本与能力处理，不能默认服务器支持全部方法。
 
 ## 参考
 

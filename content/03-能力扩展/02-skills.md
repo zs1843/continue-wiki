@@ -9,6 +9,8 @@ mindmap:
     heading: "组成与加载方式"
   - label: "发现 → 激活 → 按需加载"
     heading: "组成与加载方式"
+  - label: "元数据先加载，正文按需读取"
+    heading: "一个最小的技能文件"
   - label: "描述写清做什么和何时用"
     heading: "描述即触发器"
   - label: "示例驱动"
@@ -32,6 +34,33 @@ Agent Skills 规范要求目录至少包含 `SKILL.md`。该文件由 YAML 元�
 3. 执行过程中按需读取参考资料、使用附带资源。[1]
 
 这种组织方式把「发现能力」和「加载详细做法」分开，减少每次都提供全部细节的需要。具体支持方式取决于使用的宿主。
+
+## 一个最小的技能文件
+
+规范要求的核心就是一个 `SKILL.md`。下面取自 Anthropic 文档的 `pdf-processing` 示例，外层用四个反引号，方便看清里面还有代码块：[2]
+
+````markdown
+---
+name: pdf-processing
+description: Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
+---
+
+# PDF Processing
+
+## Quick start
+
+Extract text with pdfplumber:
+
+```python
+import pdfplumber
+with pdfplumber.open("file.pdf") as pdf:
+    text = pdf.pages[0].extract_text()
+```
+````
+
+（示例节选，保留 frontmatter、正文与代码块的写法。）[2]
+
+`name` 与 `description` 在启动时随元数据进入系统提示，正文只在被选中后读取；正文里还可以引用 `FORMS.md`、`REFERENCE.md` 等文件，执行时按需读取。这就是「渐进加载」的实现：先用最少的信息判断要不要加载，再逐层展开细节。
 
 ## 与工具和协议的区别
 

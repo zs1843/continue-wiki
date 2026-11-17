@@ -11,6 +11,8 @@ mindmap:
     heading: "和单个代理相比"
   - label: "强依赖任务不适合拆分"
     heading: "拆分不划算的情形"
+  - label: "子代理只收到自己的系统提示"
+    heading: "一个子代理是怎么定义的"
 ---
 
 **Subagent（子智能体）** 是由主流程委派、负责局部任务的 Agent。主流程组织整体目标，子智能体完成某一部分探索或处理，再交回结果供主流程整合。[1]
@@ -22,6 +24,26 @@ mindmap:
 独立上下文主要指模型处理任务时使用的信息范围，不代表独立的文件系统或环境。历史继承、共享文件与可用工具，取决于具体宿主的实现。
 
 这样做的直接作用是控制主流程的上下文占用：探索过程产生的中间尝试留在子代理窗口里，主流程只接收摘要，避免长轨迹把主窗口挤满。[1]
+
+## 一个子代理是怎么定义的
+
+Claude Code 用 Markdown 文件定义子代理，放在 `~/.claude/agents/` 或项目的 `.claude/agents/` 下。下面取自官方示例：[2]
+
+```markdown
+---
+name: code-reviewer
+description: Reviews code for quality and best practices
+tools: Read, Glob, Grep
+model: sonnet
+---
+
+You are a code reviewer. When invoked, analyze the code and provide
+specific, actionable feedback on quality, security, and best practices.
+```
+
+frontmatter 里的 `name`、`description`、`tools`、`model` 决定它叫什么、何时被选中、能用哪些工具、用哪个模型；正文是它自己的系统提示。文档说明子代理只收到这份提示和基本环境信息，不继承主代理的对话——这就是「独立上下文」在产品里的落地方式。[2]
+
+使用时由主代理按描述委派，例如「用 code-reviewer 审查这次改动」；子代理返回结论，主代理再汇总。委派得越具体，越不容易和别的子代理重复劳动。
 
 ## 和单个代理相比
 
@@ -47,3 +69,4 @@ mindmap:
 ## 参考
 
 1. Anthropic，[How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)，Benefits of a multi-agent system、Architecture overview、Prompt engineering。文中系统作为设计实例，90.2%、4 倍与 15 倍等数字来自其内部评测，不代表所有宿主的统一行为。
+2. Claude Code 文档，[Subagents](https://code.claude.com/docs/en/sub-agents)，定义格式与「子代理只收到自己的系统提示」的说明；2026-11-17 读取。

@@ -10,6 +10,8 @@ mindmap:
     heading: "从调用工具到推进任务"
   - label: "程序执行，结果反馈给模型"
     heading: "从调用工具到推进任务"
+  - label: "tool_use 与 tool_result 往返"
+    heading: "一次工具调用长什么样"
 ---
 
 **Agent（智能体）** 是一类围绕目标运行、根据环境反馈选择后续行动的系统。在基于大语言模型的 Agent 中，模型参与决定下一步使用什么工具、怎样推进任务。Anthropic 用「控制路径由预设代码决定，还是由模型动态决定」区分工作流与 Agent。[1]
@@ -29,6 +31,36 @@ mindmap:
 
 例如，查找某个概念时，系统可以调用笔记搜索工具；如果结果不足，再换关键词、补充检索，直到获得足够依据。这个简化示例中，搜索工具提供能力，模型对后续步骤的选择体现了 Agent 的控制过程。
 
+## 一次工具调用长什么样
+
+用 Claude 接口文档里的 `get_weather` 为例。应用在请求中给出工具定义，模型返回一个 `tool_use` 块，而不是直接给出答案：[2]
+
+```json
+{
+  "type": "tool_use",
+  "id": "toolu_01A09q90qw90lq917835lq9",
+  "name": "get_weather",
+  "input": { "location": "San Francisco, CA" }
+}
+```
+
+应用执行真正的查询，再把结果作为 `tool_result` 放进下一轮对话：[2]
+
+```json
+{
+  "role": "user",
+  "content": [
+    {
+      "type": "tool_result",
+      "tool_use_id": "toolu_01A09q90qw90lq917835lq9",
+      "content": "15 degrees Celsius, partly cloudy"
+    }
+  ]
+}
+```
+
+下一轮模型读到这个结果，才生成回答。一次问答可能只有这一次调用；当应用把「模型决定调哪个工具、执行、回传」写成循环、按目标连续推进时，才构成 Agent 的控制路径。[1][2]
+
 ## 与其他概念的关系
 
 [工具 Schema](/notes/tool-schema/)描述一次调用需要哪些参数；[Agent Loop](/notes/agent-loop/)负责把调用、执行和反馈循环运行起来；[ReAct](/notes/react/)描述推理与行动怎样交替配合。
@@ -36,4 +68,4 @@ mindmap:
 ## 参考
 
 1. Anthropic，[Building effective agents](https://www.anthropic.com/research/building-effective-agents)，What are agents?、Agents。
-2. Anthropic，[Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)，How tool use works；以 Claude 的接口说明工具调用机制。
+2. Anthropic，[Tool use with Claude](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)，How tool use works 中 `tool_use` 与 `tool_result` 的往返示例；以 Claude 的接口说明工具调用机制。
