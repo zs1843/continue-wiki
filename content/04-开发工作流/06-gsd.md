@@ -2,7 +2,7 @@
 title: GSD 与阶段化交付
 slug: gsd
 status: published
-order: 50
+order: 60
 updated: "2026-11-17"
 mindmap:
   - label: "Discuss → Plan → Execute → Verify → Ship"

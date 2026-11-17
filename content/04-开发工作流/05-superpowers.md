@@ -2,7 +2,7 @@
 title: Superpowers 工作流
 slug: superpowers
 status: published
-order: 40
+order: 50
 updated: "2026-11-17"
 mindmap:
   - label: "可组合的 Skills"
@@ -21,7 +21,7 @@ mindmap:
 ## 与相关方法的关系
 
 - [Skill](/notes/skills/)是组织任务能力的形式，Superpowers 是使用这种形式的具体方法集。
-- [计划模式](/notes/planning-and-superpowers/)是产品层面的工作模式，与方法集覆盖的范围不同。
+- [计划模式](/notes/plan-mode/)是产品层面的工作模式，与方法集覆盖的范围不同；两者的对比见[单独一篇](/notes/planning-and-superpowers/)。
 - [TDD](/notes/test-driven-development/)是其工作流强调的开发方法之一，关注测试先行与迭代实现。
 - [GSD](/notes/gsd/)也组织开发过程，但需要分别阅读各自的阶段、状态材料和使用约定。
 

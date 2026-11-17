@@ -58,10 +58,13 @@ slug: knowledge
 
 ## 开发工作流
 
-- [计划模式与 Superpowers](/notes/planning-and-superpowers/)
-  - [计划模式：实施前分析](/notes/planning-and-superpowers/)
-  - [Superpowers：覆盖多个开发环节](/notes/planning-and-superpowers/#%E4%B8%A4%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB)
-  - [工作模式与开发方法的范围不同](/notes/planning-and-superpowers/#%E4%B8%A4%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [计划模式](/notes/plan-mode/)
+  - [先分析，不改动源码](/notes/plan-mode/)
+  - [批准计划后才开始编辑](/notes/plan-mode/#%E6%89%B9%E5%87%86%E4%B8%8E%E5%88%87%E6%8D%A2)
+  - [是工作模式，不是方法论](/notes/plan-mode/#%E8%BE%B9%E7%95%8C%E4%B8%8E%E4%BB%A3%E4%BB%B7)
+- [计划模式与 Superpowers 的对比](/notes/planning-and-superpowers/)
+  - [产品模式与方法集不是一层](/notes/planning-and-superpowers/#%E4%B8%A4%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [计划阶段可以放进计划模式](/notes/planning-and-superpowers/#%E6%80%8E%E6%A0%B7%E7%BB%84%E5%90%88)
 - [SDD：规范驱动开发](/notes/spec-driven-development/)
   - [规范持续指导实现](/notes/spec-driven-development/)
   - [行为、边界与验收条件](/notes/spec-driven-development/#%E8%A7%84%E8%8C%83%E9%9C%80%E8%A6%81%E8%A1%A8%E8%BE%BE%E4%BB%80%E4%B9%88)

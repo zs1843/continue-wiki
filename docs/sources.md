@@ -13,7 +13,8 @@
 | Skill | [Agent Skills Specification](https://agentskills.io/specification)：目录、SKILL.md 格式与渐进加载；[Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)：简洁、描述写法、示例与模板、避免的写法。四条实践为整理时归纳，逐条对应指南内容 |
 | 上下文工程 | [Effective context engineering](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)：上下文范围、检索、压缩、结构化笔记和子代理 |
 | Prompt / Context / Harness | 上述上下文文章与 [Effective harnesses](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)：指令、信息与运行机制的区分，跨会话任务实例；正文对照表为解释性归纳 |
-| 计划模式与 Superpowers | [Claude Code Common workflows](https://code.claude.com/docs/en/common-workflows#plan-before-editing)：计划模式的具体产品实例；[Superpowers README](https://github.com/obra/superpowers)：方法集范围与工作流 |
+| 计划模式 | Claude Code，[Choose a permission mode](https://code.claude.com/docs/en/permission-modes)：plan mode 的行为、进入方式、批准选项与边界；2026-11-17 读取，产品行为仅对应 Claude Code |
+| 计划模式与 Superpowers 的对比 | 上述权限模式说明与 [Superpowers README](https://github.com/obra/superpowers)：方法集范围与工作流；对比维度为整理时的归纳 |
 | Superpowers | 同一 README：可组合 Skills、需求探索、计划、执行和检查；不记录未核实的包版本 |
 | GSD | [原仓库迁移说明](https://github.com/gsd-build/get-shit-done)、[GSD Core README](https://github.com/open-gsd/gsd-core)：阶段循环、子智能体与状态材料 |
 | SDD | [Spec Kit 方法说明](https://github.com/github/spec-kit/blob/main/spec-driven.md)与 [README](https://github.com/github/spec-kit)：规范作为持续开发依据，作为具体方法实例 |

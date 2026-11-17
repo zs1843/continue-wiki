@@ -2,7 +2,7 @@
 title: SDD：规范驱动开发
 slug: spec-driven-development
 status: published
-order: 20
+order: 30
 updated: "2026-11-17"
 mindmap:
   - label: "规范持续指导实现"
@@ -26,7 +26,7 @@ mindmap:
 
 ## 与计划和测试的关系
 
-[计划](/notes/planning-and-superpowers/)把要求拆成可实施步骤；[TDD](/notes/test-driven-development/)用测试推动下一小步行为。SDD 关注规范如何贯穿整个过程，三者可以配合。[GSD](/notes/gsd/)则把规范、阶段计划和验证组织成具体工作流。
+[计划模式](/notes/plan-mode/)先分析再列实施步骤；[TDD](/notes/test-driven-development/)用测试推动下一小步行为。SDD 关注规范如何贯穿整个过程，三者可以配合。[GSD](/notes/gsd/)则把规范、阶段计划和验证组织成具体工作流。
 
 ## 参考
 

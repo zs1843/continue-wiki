@@ -2,7 +2,7 @@
 title: TDD：测试驱动开发
 slug: test-driven-development
 status: published
-order: 30
+order: 40
 updated: "2026-11-17"
 mindmap:
   - label: "Red：测试因缺少行为而失败"

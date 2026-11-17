@@ -2,7 +2,23 @@
 
 日期：2026-11-17。本记录描述实际执行结果，不代表所有后续维护动作都已完成。
 
-## 知识结构重整（最新）
+## 拆分计划模式（最新）
+
+2026-11-17：把原来合写的「计划模式与 Superpowers」拆成两篇，先讲清计划模式本身，再单独对比。
+
+- 新增「计划模式」（`/notes/plan-mode/`）：按 Claude Code 权限模式说明写清分析先于编辑、批准计划后才进入编辑、`Shift+Tab`／`/plan`／命令行进入、批准后的权限模式切换，以及产品差异、审批往返、不能当成安全边界等边界。
+- 原「计划模式与 Superpowers」保留地址 `/notes/planning-and-superpowers/`，改为对比专篇：按形态、范围、产出、生效方式、依赖五个维度对照，说明计划阶段可以放进计划模式，以及「批准机制属于宿主、方法论不提供拦截」。
+- 开发工作流组重排为：计划模式、两者对比、SDD、TDD、Superpowers、GSD；ReAct、SDD、Superpowers 中原本指向对比篇的「计划模式」链接改指新篇。
+- README 的内容结构说明同步；来源记录由一行拆成两行，计划模式改引权限模式文档作为一手来源。
+
+实际验证：
+
+- `npm run maps`：6 张导图、16 篇公开笔记、51 个关键知识点。
+- `npm run check`：0 错误、0 警告；`npm test`：13 项通过。
+- `npm run build`：25 个 HTML 页面、63 文件清单，导航顺序、锚点与断链检查通过。
+- `/notes/plan-mode/` 与 `/notes/planning-and-superpowers/` 均返回 200，导图节点可跳转对应章节。截图：`.local/plan-mode-note.png`、`.local/planning-compare-note.png`。
+
+## 知识结构重整（此前）
 
 2026-11-17：15 篇笔记按「机制 → 信息 → 能力 → 方法 → 反思」重新分组，避免把 MCP、Skill 这类能力接入与 Agent 基础机制混在同一层。
 

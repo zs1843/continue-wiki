@@ -74,7 +74,7 @@ CoT（Chain-of-Thought）只在内部生成推理，不接触外部环境；Act 
 
 ## 和相邻概念的关系
 
-ReAct 只规定「推理与行动怎么交替」，不规定动作怎样交给模型。动作通常由 [工具 Schema](/notes/tool-schema/) 描述，执行交给 [Function Calling](/notes/agent-and-function-calling/)，多轮运行和停止条件由 [Agent Loop](/notes/agent-loop/) 组织。轨迹累积后如何取舍，属于 [上下文工程](/notes/context-engineering/) 的问题；先规划后执行与边想边做的取舍，可与 [计划模式](/notes/planning-and-superpowers/)对照。
+ReAct 只规定「推理与行动怎么交替」，不规定动作怎样交给模型。动作通常由 [工具 Schema](/notes/tool-schema/) 描述，执行交给 [Function Calling](/notes/agent-and-function-calling/)，多轮运行和停止条件由 [Agent Loop](/notes/agent-loop/) 组织。轨迹累积后如何取舍，属于 [上下文工程](/notes/context-engineering/) 的问题；先规划后执行与边想边做的取舍，可与 [计划模式](/notes/plan-mode/)对照。
 
 ## 参考
 
