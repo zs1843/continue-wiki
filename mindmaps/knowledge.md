@@ -60,7 +60,8 @@ slug: knowledge
 
 - [计划模式](/notes/plan-mode/)
   - [先分析，不改动源码](/notes/plan-mode/)
-  - [批准计划后才开始编辑](/notes/plan-mode/#%E6%89%B9%E5%87%86%E4%B8%8E%E5%88%87%E6%8D%A2)
+  - [提示之外还要权限层拦截](/notes/plan-mode/#%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0)
+  - [批准计划是一次状态切换](/notes/plan-mode/#%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%AF%9D%E6%80%8E%E4%B9%88%E8%B5%B0)
   - [是工作模式，不是方法论](/notes/plan-mode/#%E8%BE%B9%E7%95%8C%E4%B8%8E%E4%BB%A3%E4%BB%B7)
 - [计划模式与 Superpowers 的对比](/notes/planning-and-superpowers/)
   - [产品模式与方法集不是一层](/notes/planning-and-superpowers/#%E4%B8%A4%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB)

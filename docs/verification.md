@@ -10,13 +10,14 @@
 - 原「计划模式与 Superpowers」保留地址 `/notes/planning-and-superpowers/`，改为对比专篇：按形态、范围、产出、生效方式、依赖五个维度对照，说明计划阶段可以放进计划模式，以及「批准机制属于宿主、方法论不提供拦截」。
 - 开发工作流组重排为：计划模式、两者对比、SDD、TDD、Superpowers、GSD；ReAct、SDD、Superpowers 中原本指向对比篇的「计划模式」链接改指新篇。
 - README 的内容结构说明同步；来源记录由一行拆成两行，计划模式改引权限模式文档作为一手来源。
+- 计划模式补写「原理与实现」：指令层、权限层、状态层三层约束，附拦截点与模式切换的示意代码，以及 `.claude/settings.json` 的 `defaultMode` 配置；说明计划产物是自由文本、靠人审，不是固定 schema。
 
 实际验证：
 
-- `npm run maps`：6 张导图、16 篇公开笔记、51 个关键知识点。
+- `npm run maps`：6 张导图、16 篇公开笔记、52 个关键知识点。
 - `npm run check`：0 错误、0 警告；`npm test`：13 项通过。
 - `npm run build`：25 个 HTML 页面、63 文件清单，导航顺序、锚点与断链检查通过。
-- `/notes/plan-mode/` 与 `/notes/planning-and-superpowers/` 均返回 200，导图节点可跳转对应章节。截图：`.local/plan-mode-note.png`、`.local/planning-compare-note.png`。
+- `/notes/plan-mode/` 与 `/notes/planning-and-superpowers/` 均返回 200，导图节点可跳转对应章节；三处代码块（TypeScript 示意与 JSON 配置）正常渲染并带复制按钮。截图：`.local/plan-mode-note.png`、`.local/planning-compare-note.png`。
 
 ## 知识结构重整（此前）
 
