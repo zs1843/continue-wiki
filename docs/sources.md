@@ -7,10 +7,10 @@
 | Agent 与 Function Calling | [Building effective agents](https://www.anthropic.com/research/building-effective-agents)：Agent 与工作流分类；[Tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)：工具调用、执行位置与结果回传 |
 | 工具 Schema | [JSON Schema Object](https://json-schema.org/understanding-json-schema/reference/object)、[Annotations](https://json-schema.org/understanding-json-schema/reference/annotations)：输入结构与注解；[MCP Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)：工具定义 |
 | Agent Loop | 上述 Tool use 的调用反馈过程与 Building effective agents 的环境反馈、停止条件；正文流程图为机制示意 |
-| Subagent | [Multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)：任务委派、独立上下文和汇总，作为具体系统实例 |
+| Subagent | [Multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)：任务委派、独立上下文与压缩汇总、并行数量与时间收益、90.2% 内部评测与 4／15 倍 token 成本、不适合共享上下文任务的说明，作为具体系统实例 |
 | ReAct | [原论文 arXiv v3](https://arxiv.org/abs/2210.03629v3)，2023-03-10（ICLR 2023 正式版）：第 2 节 thought 与动作空间、第 3 节 PaLM-540B 对照数据与 HotpotQA 失败类型标注、第 4 节 ALFWorld／WebShop 结果、失败与微调说明；正文检索轨迹为按论文动作格式自拟 |
 | MCP | [Architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture)、[Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[Lifecycle](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle)、[Prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts)、[Resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)，固定参考 2025-11-25 版：角色、初始化、工具发现和调用、提示模板与资源的列举读取；正文流程图按所提供示意图重绘，接口名称按同版本规范核对 |
-| Skill | [Agent Skills Specification](https://agentskills.io/specification)：目录、SKILL.md 格式和渐进加载 |
+| Skill | [Agent Skills Specification](https://agentskills.io/specification)：目录、SKILL.md 格式与渐进加载；[Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)：简洁、描述写法、示例与模板、避免的写法。四条实践为整理时归纳，逐条对应指南内容 |
 | 上下文工程 | [Effective context engineering](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)：上下文范围、检索、压缩、结构化笔记和子代理 |
 | Prompt / Context / Harness | 上述上下文文章与 [Effective harnesses](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)：指令、信息与运行机制的区分，跨会话任务实例；正文对照表为解释性归纳 |
 | 计划模式与 Superpowers | [Claude Code Common workflows](https://code.claude.com/docs/en/common-workflows#plan-before-editing)：计划模式的具体产品实例；[Superpowers README](https://github.com/obra/superpowers)：方法集范围与工作流 |
