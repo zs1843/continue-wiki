@@ -1,0 +1,13 @@
+---
+import { render } from 'astro:content';
+import Notebook from '../layouts/Notebook.astro';
+import { publishedNotes } from '../lib/notes';
+
+// 首页直接打开第一篇笔记；只索引其稳定地址，避免搜索出现重复正文。
+const note = (await publishedNotes())[0];
+const content = note ? await render(note) : undefined;
+const Content = content?.Content;
+---
+<Notebook title={note?.data.title ?? '还没有笔记'} current={note?.data.slug} folders={note?.folders} updated={note?.data.updated} indexable={false}>
+  {Content ? <Content /> : <p>还没有公开的笔记。</p>}
+</Notebook>

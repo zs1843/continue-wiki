@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1940" viewBox="0 0 1200 1940" role="img" aria-labelledby="title desc">
+  <title id="title">MCP 初始化、发现与工具调用流程</title>
+  <desc id="desc">OpenCode 宿主中的 MCP 客户端与天气查询服务器交互。先通过 initialize 协商版本与能力，服务器响应后客户端发送 notifications/initialized；再列出工具、按能力选择列出提示模板或资源；最后通过 tools/call 调用 get_weather 并获取执行结果。实线向右表示客户端发送，虚线向左表示服务器响应。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 18 16" refX="16" refY="8" markerWidth="18" markerHeight="16" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L16 8L0 16Z" fill="#33443e"/></marker>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;text-anchor:middle;fill:#283a33}
+      .participant{font-size:32px;font-weight:600}.participant-sub{font-size:27px;fill:#5e7067}
+      .stage{font-size:31px;font-weight:600;letter-spacing:.5px}.method{font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:31px;font-weight:500}
+      .label{font-size:29px;font-weight:500}.detail{font-size:25px;fill:#52675c}.hint{font-size:23px;fill:#607b62}
+      .request,.response{fill:none;stroke:#33443e;stroke-width:3;marker-end:url(#arrow)}.response{stroke-dasharray:11 8}
+      .lifeline{stroke:#c3cec7;stroke-width:2;stroke-dasharray:7 9}
+    </style>
+  </defs>
+  <rect width="1200" height="1940" fill="#fff"/>
+
+  <rect x="90" y="158" width="1020" height="520" rx="18" fill="#edf4fa" stroke="#dbe6ef" stroke-width="2"/>
+  <rect x="90" y="702" width="1020" height="640" rx="18" fill="#eef6ee" stroke="#dce9da" stroke-width="2"/>
+  <rect x="90" y="1366" width="1020" height="372" rx="18" fill="#fbf1e8" stroke="#eedfcf" stroke-width="2"/>
+
+  <path class="lifeline" d="M220 128V1784M980 128V1784"/>
+
+  <rect x="116" y="182" width="968" height="64" rx="10" fill="#dce8f4"/>
+  <text class="stage" x="600" y="225">第一阶段：初始化（版本与能力协商）</text>
+  <text class="method" x="600" y="296">initialize</text>
+  <text class="detail" x="600" y="334">协议版本、客户端能力与信息</text>
+  <path class="request" d="M220 362H980"/>
+  <text class="label" x="600" y="414">初始化响应</text>
+  <text class="detail" x="600" y="452">协商版本、服务器能力与信息</text>
+  <path class="response" d="M980 480H220"/>
+  <text class="method" x="600" y="532">notifications/initialized</text>
+  <text class="detail" x="600" y="570">客户端确认初始化完成</text>
+  <path class="request" d="M220 600H980"/>
+
+  <rect x="116" y="726" width="968" height="64" rx="10" fill="#deecdc"/>
+  <text class="stage" x="600" y="769">第二阶段：发现（枚举可用能力）</text>
+  <text class="method" x="600" y="838">tools/list</text>
+  <text class="detail" x="600" y="876">查询可用工具</text>
+  <path class="request" d="M220 904H980"/>
+  <text class="label" x="600" y="956">返回工具定义</text>
+  <text class="detail" x="600" y="994">名称、描述、inputSchema</text>
+  <path class="response" d="M980 1022H220"/>
+  <text x="600" y="1074"><tspan class="method">prompts/list</tspan><tspan class="label"> 或 </tspan><tspan class="method">resources/list</tspan></text>
+  <text class="detail" x="600" y="1112">按服务器已声明的能力选择</text>
+  <path class="request" d="M220 1140H980"/>
+  <text class="label" x="600" y="1194">返回提示模板或资源的元数据列表</text>
+  <path class="response" d="M980 1232H220"/>
+  <text class="hint" x="600" y="1298">发现用于列举条目；读取具体内容需另行请求</text>
+
+  <rect x="116" y="1390" width="968" height="64" rx="10" fill="#f1dfcf"/>
+  <text class="stage" x="600" y="1433">第三阶段：执行（调用天气工具）</text>
+  <text class="method" x="600" y="1500">tools/call</text>
+  <text class="detail" x="600" y="1538">调用 get_weather，传入查询参数</text>
+  <path class="request" d="M220 1566H980"/>
+  <text class="label" x="600" y="1630">返回工具执行结果</text>
+  <path class="response" d="M980 1668H220"/>
+
+  <g>
+    <rect x="40" y="24" width="360" height="104" rx="14" fill="#f4f6f2" stroke="#cbd8cc" stroke-width="2"/>
+    <text class="participant" x="220" y="68">MCP 客户端</text>
+    <text class="participant-sub" x="220" y="108">（OpenCode 内）</text>
+    <rect x="800" y="24" width="360" height="104" rx="14" fill="#f4f6f2" stroke="#cbd8cc" stroke-width="2"/>
+    <text class="participant" x="980" y="68">MCP 服务器</text>
+    <text class="participant-sub" x="980" y="108">（天气查询）</text>
+    <rect x="40" y="1784" width="360" height="104" rx="14" fill="#f4f6f2" stroke="#cbd8cc" stroke-width="2"/>
+    <text class="participant" x="220" y="1828">MCP 客户端</text>
+    <text class="participant-sub" x="220" y="1868">（OpenCode 内）</text>
+    <rect x="800" y="1784" width="360" height="104" rx="14" fill="#f4f6f2" stroke="#cbd8cc" stroke-width="2"/>
+    <text class="participant" x="980" y="1828">MCP 服务器</text>
+    <text class="participant-sub" x="980" y="1868">（天气查询）</text>
+  </g>
+  <text x="600" y="1922" style="font-size:19px;fill:#8b998f">MCP 交互流程示意 · 参考 2025-11-25 版规范</text>
+</svg>

@@ -1,0 +1,21 @@
+# 现有 Caddy 服务器上的独立虚拟主机示例。使用前替换域名与目录，
+# 不要覆盖同机其他站点的站点块。改完先校验再平滑生效：
+#   caddy validate --config /etc/caddy/Caddyfile
+#   systemctl reload caddy
+wiki.example.com {
+	root * /var/www/ai-wiki/current
+	encode zstd gzip
+
+	# 未哈希页面与搜索索引每次重新验证；带哈希的静态资源可长缓存。
+	header Cache-Control "no-cache"
+	header /_astro/* Cache-Control "public, max-age=31536000, immutable"
+	header /pagefind/* Cache-Control "no-cache"
+
+	file_server
+
+	# 站点使用 trailingSlash，缺失页面走构建出的 404.html，并保留 404 状态。
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}

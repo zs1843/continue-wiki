@@ -1,0 +1,13 @@
+---
+import { render } from 'astro:content';
+import Notebook from '../../layouts/Notebook.astro';
+import { publishedNotes, type Note } from '../../lib/notes';
+export async function getStaticPaths() {
+  return (await publishedNotes()).map(note => ({ params: { slug: note.data.slug }, props: { note } }));
+}
+const { note } = Astro.props as { note: Note };
+const { Content } = await render(note);
+---
+<Notebook title={note.data.title} current={note.data.slug} folders={note.folders} updated={note.data.updated}>
+  <Content />
+</Notebook>

@@ -1,0 +1,29 @@
+# 独立虚拟主机的 HTTP 起点。按现有证书流程配置 HTTPS 后再正式上线。
+# 使用前替换域名与目录，不要覆盖已有 WordPress 配置。
+server {
+    listen 80;
+    server_name wiki.example.com;
+    root /var/www/ai-wiki/current;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+        add_header Cache-Control "no-cache";
+    }
+    location ^~ /pagefind/ {
+        try_files $uri =404;
+        add_header Cache-Control "no-cache";
+    }
+    location ^~ /_astro/ {
+        try_files $uri =404;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+    location ~ (^|/)\. {
+        deny all;
+    }
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+        add_header Cache-Control "no-cache";
+    }
+}

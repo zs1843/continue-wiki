@@ -1,0 +1,118 @@
+---
+import Directory from '../components/Directory.astro';
+import { buildTree, publishedNotes } from '../lib/notes';
+import { publishedMindmaps } from '../lib/mindmaps';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  current?: string;
+  folders?: string[];
+  updated?: string;
+  description?: string;
+  indexable?: boolean;
+  currentMap?: string;
+  wide?: boolean;
+}
+const { title, current = '', currentMap = '', wide = false, folders = [], updated, description = '来自书籍与文章的概念笔记，通过定义、解释、示例与来源建立知识之间的联系。', indexable = true } = Astro.props;
+const notes = await publishedNotes();
+const mindmaps = await publishedMindmaps();
+const tree = buildTree(notes);
+const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.url.pathname, Astro.site) : undefined;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f9f7" />
+    <script is:inline>
+      try {
+        document.documentElement.dataset.sidebarMode = window.innerWidth >= 640 && localStorage.getItem('ai-wiki:sidebar-mode') !== 'floating' ? 'pinned' : 'floating';
+      } catch {
+        document.documentElement.dataset.sidebarMode = window.innerWidth >= 640 ? 'pinned' : 'floating';
+      }
+    </script>
+    {!indexable && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <title>{title} · note</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">跳到正文</a>
+    <button class="drawer-shade" aria-label="关闭目录" tabindex="-1"></button>
+    <aside class="sidebar" id="directory" aria-label="笔记目录">
+      <button class="drawer-close" aria-label="关闭目录" type="button">×</button>
+      <a class="brand" href="/" aria-label="note 首页">note</a>
+      <button class="search-trigger" type="button"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>搜索笔记</span><kbd>⌘ K</kbd></button>
+      <nav aria-label="笔记导航">
+        <div class="directory-label">全部笔记 <span>{notes.length}</span></div>
+        <details class="folder" data-folder="/思维导图" open>
+          <summary><span class="chevron" aria-hidden="true">›</span><span>思维导图</span></summary>
+          <div class="folder-children">
+            <a class:list={['note-link', { active: currentMap === 'index' }]} href="/mindmaps/" aria-current={currentMap === 'index' ? 'page' : undefined}><span class="note-glyph" aria-hidden="true">⌘</span><span>全部导图</span></a>
+            {mindmaps.map(map => <a class:list={['note-link', { active: currentMap === map.slug }]} href={`/mindmaps/${map.slug}/`} aria-current={currentMap === map.slug ? 'page' : undefined}><span class="note-glyph" aria-hidden="true">⌘</span><span>{map.title}</span></a>)}
+          </div>
+        </details>
+        <Directory node={tree} current={current} />
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="pin-toggle" type="button" aria-label="固定目录" aria-pressed="true" title="固定目录，阅读时保持展开">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 3 6 0-1 6 4 4v2H6v-2l4-4-1-6ZM12 15v6"/></svg>
+        </button>
+      </div>
+    </aside>
+    <script is:inline>
+      // 在正文解析前恢复目录，避免换页时先显示目录顶部再跳回。
+      (() => {
+        const nav = document.querySelector('.sidebar nav');
+        const scrollKey = 'ai-wiki:directory-scroll';
+        document.querySelectorAll('details[data-folder]').forEach(folder => {
+          const key = `ai-wiki:folder:${folder.dataset.folder}`;
+          try {
+            const remembered = localStorage.getItem(key);
+            if (remembered !== null) folder.open = remembered === 'open';
+          } catch { /* 存储不可用时保留默认展开状态 */ }
+          if (folder.querySelector('[aria-current="page"]')) folder.open = true;
+          folder.addEventListener('toggle', () => {
+            try { localStorage.setItem(key, folder.open ? 'open' : 'closed'); } catch {}
+          });
+        });
+        try {
+          const top = Number(sessionStorage.getItem(scrollKey));
+          if (Number.isFinite(top) && top >= 0) nav.scrollTop = top;
+        } catch { /* 阅读不依赖存储权限 */ }
+        const rememberScroll = () => {
+          try { sessionStorage.setItem(scrollKey, String(nav.scrollTop)); } catch {}
+        };
+        nav.addEventListener('scroll', rememberScroll, { passive: true });
+        // 点击时同步保存，覆盖紧接着滚动就导航、尚未派发 scroll 的情况。
+        nav.addEventListener('click', rememberScroll);
+        window.addEventListener('pagehide', rememberScroll);
+      })();
+    </script>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="menu-button" aria-label="打开目录" aria-expanded="false" aria-controls="directory">☰</button>
+        <span class="notebook-section">{folders.at(-1) ?? '笔记'}</span>
+        <button class="mobile-search search-trigger" aria-label="搜索笔记">⌕</button>
+      </header>
+      <main id="content" tabindex="-1">
+        <article class:list={['article', { 'article-wide': wide }]} data-pagefind-body={indexable ? '' : undefined}>
+          <header class="article-header">
+            <h1 data-pagefind-meta="title">{title}</h1>
+            {updated && <p class="article-meta" data-pagefind-ignore><time datetime={updated}>{updated}</time></p>}
+          </header>
+          <div class="prose"><slot /></div>
+          <footer class="article-footer" data-pagefind-ignore><a href="#content">回到顶部 ↑</a></footer>
+        </article>
+      </main>
+    </div>
+    <dialog id="search-dialog" aria-label="搜索笔记">
+      <div class="search-heading"><span>搜索笔记</span><button class="close-search" aria-label="关闭搜索">Esc <span>×</span></button></div>
+      <div id="search"><p class="search-loading" role="status">正在准备搜索…</p></div>
+      <p class="search-hint">搜索标题与正文 · 支持中文和英文术语</p>
+    </dialog>
+    <script src="../scripts/notebook.ts"></script>
+  </body>
+</html>

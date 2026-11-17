@@ -1,0 +1,16 @@
+---
+import type { TreeNode } from '../lib/notes';
+interface Props { node: TreeNode; current: string }
+const { node, current } = Astro.props;
+---
+{node.notes.map(note => (
+  <a class:list={['note-link', { active: note.data.slug === current }]} href={`/notes/${note.data.slug}/`} aria-current={note.data.slug === current ? 'page' : undefined}>
+    <span class="note-glyph" aria-hidden="true">▤</span><span>{note.data.title}</span>
+  </a>
+))}
+{node.folders.map(folder => (
+  <details class="folder" data-folder={folder.key} open>
+    <summary><span class="chevron" aria-hidden="true">›</span><span>{folder.label}</span></summary>
+    <div class="folder-children"><Astro.self node={folder} current={current} /></div>
+  </details>
+))}

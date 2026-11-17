@@ -1,0 +1,20 @@
+---
+import Notebook from '../../layouts/Notebook.astro';
+import { publishedMindmaps } from '../../lib/mindmaps';
+import '../../styles/mindmaps.css';
+const maps = await publishedMindmaps();
+---
+<Notebook title="思维导图" currentMap="index" folders={['思维导图']} indexable={false} wide>
+  <p class="maps-intro">从关键知识点展开，回到笔记中理解细节。</p>
+  <div class="map-cards">
+    {maps.map(map => (
+      <a class:list={['map-card', { 'map-card-overview': map.overview }]} href={`/mindmaps/${map.slug}/`}>
+        <div class="map-card-symbol" aria-hidden="true">
+          <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 24h10m0 0V9h14m-14 15h14M30 24v15h14"/><rect x="4" y="18" width="16" height="12" rx="4"/><rect x="44" y="4" width="16" height="10" rx="3"/><rect x="44" y="19" width="16" height="10" rx="3"/><rect x="44" y="34" width="16" height="10" rx="3"/></svg>
+        </div>
+        <span class="map-card-content"><strong>{map.title}</strong><span>{map.noteCount} 篇笔记 · {map.pointCount} 个知识点</span></span>
+        <span class="map-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</Notebook>
