@@ -2,7 +2,7 @@
 title: Skill：可复用的任务方法
 slug: skills
 status: published
-order: 70
+order: 20
 updated: "2026-11-17"
 mindmap:
   - label: "SKILL.md 与可选资源"

@@ -2,7 +2,28 @@
 
 日期：2026-11-17。本记录描述实际执行结果，不代表所有后续维护动作都已完成。
 
-## 笔记深化：Subagent 与 Skill（最新）
+## 知识结构重整（最新）
+
+2026-11-17：15 篇笔记按「机制 → 信息 → 能力 → 方法 → 反思」重新分组，避免把 MCP、Skill 这类能力接入与 Agent 基础机制混在同一层。
+
+| 分组 | 内容 | 调整 |
+| --- | --- | --- |
+| Agent基础 | Agent 与 Function Calling、工具 Schema、Agent Loop、ReAct、Subagent | ReAct 提到 Subagent 之前，先理解交替机制再看任务拆分 |
+| 上下文与范式 | 上下文工程、Prompt／Context／Harness | 由原「上下文工程」组改名，补上范式演进这条线 |
+| 能力扩展 | MCP、Skill | 从 Agent基础移出，单独成组 |
+| 开发工作流 | 计划模式、SDD、TDD、Superpowers、GSD | 保持原分组 |
+| 工程反思 | 认知债与架构债 | 保持原分组 |
+
+slug 与文章地址不变，已有站内链接与搜索索引无需迁移；README 增加「内容结构」表说明阅读顺序与新增主题的归属规则。
+
+实际验证：
+
+- `npm run maps` 生成 6 张导图（知识总览 + 5 个主题）、49 个关键知识点；旧主题导图文件由生成器清理。
+- `npm run check`：0 错误、0 警告；`npm test`：13 项通过。
+- `npm run build`：24 个 HTML 页面、61 文件清单，导航分组顺序、导图链接与断链检查通过。
+- 浏览器检查导航与导图目录顺序；深链 `/notes/mcp/`、`/notes/skills/`、`/notes/react/`、`/mindmaps/` 均返回 200。
+
+## 笔记深化：Subagent 与 Skill（此前）
 
 2026-11-17：按新增的 AI 记录补充两篇笔记。
 

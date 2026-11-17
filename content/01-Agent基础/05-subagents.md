@@ -2,7 +2,7 @@
 title: Subagent 与任务交接
 slug: subagents
 status: published
-order: 40
+order: 50
 updated: "2026-11-17"
 mindmap:
   - label: "独立上下文与结果摘要"

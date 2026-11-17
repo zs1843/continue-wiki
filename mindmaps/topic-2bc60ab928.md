@@ -1,10 +1,10 @@
 ---
 generated_by: note-mindmaps
-title: "上下文工程"
-slug: topic-b64cd7d328
+title: "上下文与范式"
+slug: topic-2bc60ab928
 ---
 
-# 上下文工程
+# 上下文与范式
 
 - [上下文工程](/notes/context-engineering/)
   - [选择、组织与维护上下文](/notes/context-engineering/)

@@ -2,7 +2,7 @@
 title: ReAct：推理与行动的交替
 slug: react
 status: published
-order: 50
+order: 40
 updated: "2026-11-17"
 mindmap:
   - label: "thought 不改变环境"

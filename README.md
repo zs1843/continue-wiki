@@ -12,6 +12,20 @@
 
 远程仓库位于 <https://github.com/zs1843/continue-wiki>，推送到 `main` 会触发 GitHub Actions 构建、测试并发布站点。
 
+## 内容结构
+
+`content/` 按主题分五组，目录编号就是阅读顺序；组内按 frontmatter 的 `order` 排列。slug 与文件夹无关，移动分组不会改变文章地址。
+
+| 分组 | 关注点 |
+| --- | --- |
+| Agent基础 | Agent 是什么、工具接口如何描述、循环怎样推进，以及 ReAct 与子代理两种组织方式 |
+| 上下文与范式 | 上下文如何组织与压缩，Prompt／Context／Harness 三代工程范式的演进 |
+| 能力扩展 | 用 MCP 连接外部能力，用 Skill 封装一类任务的做法 |
+| 开发工作流 | 计划模式、SDD、TDD、Superpowers 与 GSD 的适用场景与分工 |
+| 工程反思 | 认知债与架构债，以及维护时如何判断 |
+
+新增主题按内容归属放进现有分组；确实形成独立领域时再加新组，并在本表补一行说明。
+
 ## 本地运行
 
 需要 Node.js 22.12+（建议通过 `.nvmrc` 使用 Node 22）。仓库锁定 Astro 6，并保留 `package-lock.json` 以便复现构建。

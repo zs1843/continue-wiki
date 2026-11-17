@@ -2,7 +2,7 @@
 title: MCP：连接外部能力
 slug: mcp
 status: published
-order: 60
+order: 10
 updated: "2026-11-17"
 mindmap:
   - label: "Host / Client / Server"
