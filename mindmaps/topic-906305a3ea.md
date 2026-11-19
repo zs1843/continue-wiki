@@ -1,7 +1,7 @@
 ---
 generated_by: note-mindmaps
 title: "工程反思"
-slug: topic-c1fd0b7e27
+slug: topic-906305a3ea
 ---
 
 # 工程反思
@@ -11,3 +11,8 @@ slug: topic-c1fd0b7e27
   - [架构债：结构增加后续修改成本](/notes/cognitive-and-architecture-debt/#%E6%9E%B6%E6%9E%84%E5%80%BA%E7%BB%93%E6%9E%84%E5%A2%9E%E5%8A%A0%E4%BA%86%E6%9C%AA%E6%9D%A5%E4%BF%AE%E6%94%B9%E6%88%90%E6%9C%AC)
   - [补充理解与改善结构处理不同问题](/notes/cognitive-and-architecture-debt/#%E4%B8%A4%E8%80%85%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%8C%BA%E5%88%86)
   - [缺理解与缺结构是两类问题](/notes/cognitive-and-architecture-debt/#%E4%B8%A4%E4%B8%AA%E5%9C%BA%E6%99%AF)
+  - [保留设计理由与人的独立判断](/notes/cognitive-and-architecture-debt/#ai-%E8%BE%85%E5%8A%A9%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%80%BA%E9%98%B2%E6%8A%A4)
+- [从编码到构建：审视任务与运行条件](/notes/engineer-as-builder/)
+  - [构建者负责目标、约束与验收](/notes/engineer-as-builder/#%E6%9E%84%E5%BB%BA%E8%80%85%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88)
+  - [审视产物，也审视产生它的条件](/notes/engineer-as-builder/#%E5%AE%A1%E6%9F%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%90%91%E5%89%8D%E5%BB%B6%E4%BC%B8)
+  - [组织知识需要可接续的载体](/notes/engineer-as-builder/#%E7%9F%A5%E8%AF%86%E6%80%8E%E6%A0%B7%E7%95%99%E5%9C%A8%E7%BB%84%E7%BB%87%E4%B8%AD)

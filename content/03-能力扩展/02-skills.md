@@ -3,7 +3,7 @@ title: Skill：可复用的任务方法
 slug: skills
 status: published
 order: 20
-updated: "2026-11-17"
+updated: "2026-11-19"
 mindmap:
   - label: "SKILL.md 与可选资源"
     heading: "组成与加载方式"
@@ -19,6 +19,8 @@ mindmap:
     heading: "负向约束"
   - label: "Skill 组织方法，MCP 连接能力"
     heading: "与工具和协议的区别"
+  - label: "复用评判标准与检查脚本"
+    heading: "承载专业评判方法"
 ---
 
 **Agent Skill** 是按约定组织的任务能力目录，使用 `SKILL.md` 保存名称、描述和执行指引，并可附带脚本、参考资料与资源文件。它把一类任务的做法封装成 Agent 能够发现和按需加载的材料。[1]
@@ -90,7 +92,16 @@ Skill 主要组织任务方法与资料；[工具 Schema](/notes/tool-schema/)�
 
 四条合起来是：范围小、能被发现、看过就会、越界能被拦住。
 
+## 承载专业评判方法
+
+Skill 可以保存代码质量、性能或安全审查的方法：关注哪些问题，采用什么标准，收集哪些证据，运行哪些脚本，以及怎样报告结果。配套资料和可执行脚本是规范允许的组成部分。[1] 例如，性能分析 Skill 可以要求先记录基线，再在相同条件下测量修改后的延迟；这是方法示例，并非规范中的固定流程。
+
+评判说明负责告诉 Agent 怎样检查，实际结果仍需要工具执行与证据支持。Skill 的存在不能自动证明代码符合某个架构或安全要求，也不能替代权限和确定性的检查门禁。在 [Harness 工程](/notes/harness-engineering/)中，它适合沉淀经过验证、能复用和修订的专业方法。
+
+书籍配套仓库的 `pr-code-review` 是一个具体实例：先获取 PR 变更，再根据文件类型加载 Python、Go、Java 等语言的审查指南，按问题严重程度组织发现，最后由脚本执行提交审查等动作。[3] 角色负责“由谁审查”，Skill 保存“按什么步骤、用哪些材料审查”；按语言读取参考资料也体现了渐进加载。这里描述的是仓库中的工作流设计，不代表本次执行过 PR 审查。
+
 ## 参考
 
 1. [Agent Skills Specification](https://agentskills.io/specification)，Directory structure、SKILL.md format、Progressive disclosure。参考 2026-11-17 读取的在线规范。
 2. Anthropic，[Skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)，2026-11-17 读取：简洁原则、描述写法、示例与模板、需要避免的写法。
+3. 张建飞，《Harness工程实战：从零开始驾驭AI软件工程》配套仓库快照 `51c6b4b`：[pr-code-review/SKILL.md](https://github.com/significantfrank/HarnessEngineering/blob/51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a/chapter3/pr-code-review/SKILL.md)，实际读取于 2026-11-19；对应书中第 3.5 节的主题。

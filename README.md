@@ -14,17 +14,21 @@
 
 ## 内容结构
 
-`content/` 按主题分五组，目录编号就是阅读顺序；组内按 frontmatter 的 `order` 排列。slug 与文件夹无关，移动分组不会改变文章地址。
+`content/` 按主题分七组，依次从基础机制进入工程治理、开发方法和案例；组内按 frontmatter 的 `order` 排列。slug 与文件夹无关，移动分组不会改变文章地址。
 
 | 分组 | 关注点 |
 | --- | --- |
-| Agent基础 | Agent 是什么、工具接口如何描述、循环怎样推进，以及 ReAct 与子代理两种组织方式 |
-| 上下文与范式 | 上下文如何组织与压缩，Prompt／Context／Harness 三代工程范式的演进 |
+| Agent基础 | Agent、工具调用、Agent Loop、ReAct、Subagent 与 Coding Agent 的定义及边界 |
+| 上下文与范式 | 上下文的组织、压缩与跨会话材料，以及 Prompt／Context／Harness 的关注范围 |
 | 能力扩展 | 用 MCP 连接外部能力，用 Skill 封装一类任务的做法 |
+| Harness工程 | 执行反馈、持续改进、仓库知识、软约束与硬门禁、测试反馈与环境 |
 | 开发工作流 | 计划模式（单独成篇）、它与 Superpowers 的对比，以及 SDD、TDD、GSD 的适用场景与分工 |
+| 工程案例 | 基于实际资料理解 CRM 迭代、遗留系统渐进重构与跨系统集成 |
 | 工程反思 | 认知债与架构债，以及维护时如何判断 |
 
 新增主题按内容归属放进现有分组；确实形成独立领域时再加新组，并在本表补一行说明。
+
+概念关系以 [Harness 工程笔记](content/04-Harness工程/01-harness-engineering.md)中的导航为一个入口，跨组链接保留“机制—方法—案例—反思”的联系。目录不限于这本书，也不把作者仓库的章节号直接用作知识分类。书籍资料范围与案例快照见 [核对记录](docs/harness-book-sources.md)。
 
 ## 本地运行
 

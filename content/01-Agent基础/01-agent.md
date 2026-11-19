@@ -3,7 +3,7 @@ title: Agent 与 Function Calling
 slug: agent-and-function-calling
 status: published
 order: 10
-updated: "2026-11-17"
+updated: "2026-11-19"
 mindmap:
   - label: "模型动态选择行动"
   - label: "Function Calling：工具名与参数"
@@ -64,6 +64,8 @@ mindmap:
 ## 与其他概念的关系
 
 [工具 Schema](/notes/tool-schema/)描述一次调用需要哪些参数；[Agent Loop](/notes/agent-loop/)负责把调用、执行和反馈循环运行起来；[ReAct](/notes/react/)描述推理与行动怎样交替配合。
+
+[Coding Agent](/notes/coding-agent/)把这种目标驱动的执行方式用于软件开发；[Harness 工程](/notes/harness-engineering/)则负责组织工具、状态、验证与恢复，让 Agent 的行动能够在工程环境里持续运行。
 
 ## 参考
 

@@ -1,0 +1,24 @@
+---
+generated_by: note-mindmaps
+title: "模型基础"
+slug: topic-49eec861e9
+---
+
+# 模型基础
+
+- [Token：文本怎样进入模型](/notes/tokens-and-tokenization/)
+  - [Token 不等于字或词](/notes/tokens-and-tokenization/#%E6%96%87%E6%9C%AC%E5%85%88%E8%A2%AB%E5%88%87%E6%88%90%E7%A6%BB%E6%95%A3%E5%8D%95%E5%85%83)
+  - [BPE 学习合并规则](/notes/tokens-and-tokenization/#bpe-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AD%90%E8%AF%8D)
+  - [编号与向量有不同职责](/notes/tokens-and-tokenization/#%E4%BB%8E%E7%BC%96%E5%8F%B7%E5%88%B0%E5%90%91%E9%87%8F)
+- [语言模型：预测下一个 Token 与生成文本](/notes/language-model-generation/)
+  - [用条件概率描述下一步](/notes/language-model-generation/#%E9%A2%84%E6%B5%8B%E7%9A%84%E6%98%AF%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87)
+  - [生成结果重新成为输入](/notes/language-model-generation/#%E8%87%AA%E5%9B%9E%E5%BD%92%E6%80%8E%E6%A0%B7%E5%BD%A2%E6%88%90%E6%95%B4%E6%AE%B5%E5%9B%9E%E7%AD%94)
+  - [解码策略决定怎样选择](/notes/language-model-generation/#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E4%B9%8B%E5%90%8E%E8%BF%98%E8%A6%81%E5%81%9A%E9%80%89%E6%8B%A9)
+- [Attention 与 Transformer：让表示结合上下文](/notes/attention-and-transformer/)
+  - [按匹配权重汇总信息](/notes/attention-and-transformer/#attention-%E6%98%AF%E5%8A%A0%E6%9D%83%E6%B1%87%E6%80%BB)
+  - [qkv-分别承担匹配与取值](/notes/attention-and-transformer/#qkv-%E4%B8%8D%E6%98%AF%E4%B8%89%E6%AE%B5%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC)
+  - [Transformer 还包括其他组件](/notes/attention-and-transformer/#%E4%BB%8E-attention-%E5%88%B0-transformer)
+- [训练与推理：参数、输入与能力适配](/notes/training-and-inference/)
+  - [训练改变参数，推理使用参数](/notes/training-and-inference/#%E8%AE%AD%E7%BB%83%E5%92%8C%E6%8E%A8%E7%90%86%E6%94%B9%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E4%B8%8D%E5%90%8C)
+  - [上下文示例不等于参数更新](/notes/training-and-inference/#%E9%A2%84%E8%AE%AD%E7%BB%83%E5%BE%AE%E8%B0%83%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%A4%BA%E4%BE%8B)
+  - [三种 Transformer 组织方式](/notes/training-and-inference/#%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8%E6%80%8E%E6%A0%B7%E5%8C%BA%E5%88%86)

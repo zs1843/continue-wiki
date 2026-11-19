@@ -3,7 +3,7 @@ title: Prompt / Context / Harness
 slug: prompt-context-harness
 status: published
 order: 20
-updated: "2026-11-17"
+updated: "2026-11-19"
 mindmap:
   - label: "Prompt：表达任务与约束"
     heading: "三者分别关注什么"
@@ -36,6 +36,8 @@ mindmap:
 长任务可能跨越多次会话。只保留一次回答，后续会话未必知道哪些工作已经完成、当前状态是什么。Anthropic 的实践通过初始化环境、记录进度、逐步实现和验证，支持后续继续工作。[2]
 
 [Agent Loop](/notes/agent-loop/)是运行过程的一部分；[上下文工程](/notes/context-engineering/)负责其中的信息组织；[GSD](/notes/gsd/)则提供了把工作分阶段并保存状态的一种方法。
+
+[Harness 工程](/notes/harness-engineering/)进一步讨论工具连接、专业方法、子任务分工和评测如何组合；[Coding Agent](/notes/coding-agent/)是观察这些机制在软件开发中如何配合的具体入口。
 
 ## 一次长任务的产物
 

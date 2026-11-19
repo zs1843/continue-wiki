@@ -3,7 +3,7 @@ title: SDD：规范驱动开发
 slug: spec-driven-development
 status: published
 order: 30
-updated: "2026-11-17"
+updated: "2026-11-19"
 mindmap:
   - label: "规范持续指导实现"
   - label: "行为、边界与验收条件"
@@ -45,6 +45,8 @@ specs/003-note-draft/
 ## 与计划和测试的关系
 
 [计划模式](/notes/plan-mode/)先分析再列实施步骤；[TDD](/notes/test-driven-development/)用测试推动下一小步行为。SDD 关注规范如何贯穿整个过程，三者可以配合。[GSD](/notes/gsd/)则把规范、阶段计划和验证组织成具体工作流。
+
+[CRM 迭代案例](/notes/crm-harness-case/)提供了另一组具体材料：客户小记的设计记录保留归属与一致性的理由，任务清单再拆解后端、测试和前端工作。它使用 OpenSpec 的目录组织，说明同一思路可以有不同的工具实现，不能把 Spec Kit 的文件布局当成全部 SDD 的定义。
 
 ## 参考
 

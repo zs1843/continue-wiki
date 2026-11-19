@@ -12,6 +12,7 @@ slug: topic-b86ec74e8d
   - [工具发现 tools/list](/notes/mcp/#%E5%B7%A5%E5%85%B7%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E5%BA%94%E7%94%A8)
   - [工具调用 tools/call](/notes/mcp/#%E5%B7%A5%E5%85%B7%E6%80%8E%E6%A0%B7%E8%BF%9B%E5%85%A5%E5%BA%94%E7%94%A8)
   - [JSON-RPC 的 initialize 与 tools/call](/notes/mcp/#%E7%BA%BF%E8%B7%AF%E4%B8%8A%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7)
+  - [连接执行结果与观测反馈](/notes/mcp/#%E5%9C%A8%E5%B7%A5%E7%A8%8B%E5%8F%8D%E9%A6%88%E9%93%BE%E8%B7%AF%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE)
 - [Skill：可复用的任务方法](/notes/skills/)
   - [SKILL.md 与可选资源](/notes/skills/#%E7%BB%84%E6%88%90%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F)
   - [发现 → 激活 → 按需加载](/notes/skills/#%E7%BB%84%E6%88%90%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F)
@@ -20,3 +21,4 @@ slug: topic-b86ec74e8d
   - [示例驱动](/notes/skills/#%E7%A4%BA%E4%BE%8B%E9%A9%B1%E5%8A%A8)
   - [负向约束](/notes/skills/#%E8%B4%9F%E5%90%91%E7%BA%A6%E6%9D%9F)
   - [Skill 组织方法，MCP 连接能力](/notes/skills/#%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [复用评判标准与检查脚本](/notes/skills/#%E6%89%BF%E8%BD%BD%E4%B8%93%E4%B8%9A%E8%AF%84%E5%88%A4%E6%96%B9%E6%B3%95)
