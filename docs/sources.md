@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 46 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 61 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -74,3 +74,27 @@ Subagent 于 2026-11-19 补充分治类比、层级协作、专业化配置、�
 | 数据隔离 | OWASP，[LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)，以仓库 [Markdown 原文](https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM02_SensitiveInformationDisclosure.md)核对，2026-11-19：敏感信息类型、泄露路径、缓解措施与系统提示限制不可靠的说明；多租户例子为自拟 |
 
 OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断页面当作已读正文；仓库原文与站点条目同属该项目的 2025 版列表。arXiv 论文只读摘要，没有转述实验数字。LangChain 与 OpenAI 文档是具体实现的说明，不当作通用标准。
+
+## 第 2–7 批：训练、推理、检索、评估、多模态与产品（2026-11-19）
+
+新增 15 篇笔记，覆盖训练与适配、推理与服务、检索工程、评估方法论、多模态与产品治理。目录同时重排为 15 组（00 学习路线 + 01–14 层）。训练与推理部分优先读取官方文档的 GitHub Markdown 原文，因为站点页面返回的是导航壳或截断正文；论文只读摘要的地方在表中注明。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 指令微调 | Hugging Face TRL，[SFT Trainer](https://raw.githubusercontent.com/huggingface/trl/main/docs/source/sft_trainer.md) 全文 Overview–SFTConfig：损失、数据格式、计损范围与学习率示例；[InstructGPT](https://arxiv.org/abs/2203.02155) 摘要 |
+| LoRA 与 QLoRA | [LoRA](https://arxiv.org/abs/2106.09685) v2 摘要：低秩矩阵、参数量与显存对比；[QLoRA](https://arxiv.org/abs/2305.14314) 摘要：4-bit 基座、NF4、65B/48GB 与 Guanaco；Hugging Face [PEFT](https://huggingface.co/docs/peft/index.md) 全文 |
+| 偏好优化 | [InstructGPT](https://arxiv.org/abs/2203.02155) 摘要：SFT+RLHF 与结果；[DPO](https://arxiv.org/abs/2305.18290) v3 摘要：RLHF 复杂性、重参数化与分类损失 |
+| 推理运行与 KV Cache | vLLM [Metrics](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/design/metrics.md) 全文：prefill/decode 区间、TPOT、缓存使用率；vLLM [Paged Attention](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/design/paged_attention.md) 的 Concepts（原文标注为历史文档）；Hugging Face [KV cache](https://raw.githubusercontent.com/huggingface/transformers/main/docs/source/en/kv_cache.md) 全文 |
+| 量化 | Hugging Face [量化概览](https://raw.githubusercontent.com/huggingface/transformers/main/docs/source/en/quantization/overview.md) 全文：位宽换算、方法数量、加载方式；[GPTQ](https://arxiv.org/abs/2210.17323) 与 [AWQ](https://arxiv.org/abs/2306.00978) 摘要；KV 量化部分同 KV cache 文档 |
+| 推理可靠性 | Azure [Retry](https://learn.microsoft.com/en-us/azure/architecture/patterns/retry) 与 [Circuit Breaker](https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker) 全文；AWS Builders' Library [Timeouts, retries, and backoff with jitter](https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter) 的 Timeouts/Retries/Jitter 正文（原链接 302 到此） |
+| 文档解析与切分 | Anthropic，[Introducing Contextual Retrieval](https://www.anthropic.com/research/contextual-retrieval)，读取至实施注意事项与结论：块大小与重叠、上下文前缀、失败率与成本、200k token 门槛；解析环节的解释为归纳 |
+| 混合检索与查询改写 | 同上：BM25、混合流程与重排候选；Elastic，[Reciprocal rank fusion](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion) 全文：公式、参数与限制；[HyDE](https://arxiv.org/abs/2212.10496) 摘要 |
+| 检索的权限与更新 | OWASP [LLM02](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)（仓库 Markdown 原文）：最小权限与系统提示限制；Elastic，[Near real-time search](https://www.elastic.co/guide/en/elasticsearch/reference/current/near-real-time.html) 全文：刷新与可见延迟；删除与重索引为归纳 |
+| 评测集与评分器 | Anthropic，[Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)，读取至附录：评测单位、任务设计、评分器取舍与校准；[LLM-as-a-Judge](https://arxiv.org/abs/2306.05685) 摘要：三类偏差与一致率 |
+| 回归与线上评估 | 同上 Anthropic 文章：能力／回归评测、分数上升例子、线上信号与维护建议；基准污染未在该文展开，正文已注明 |
+| 视觉编码与跨模态对齐 | [ViT](https://arxiv.org/abs/2010.11929)、[CLIP](https://arxiv.org/abs/2103.00020)、[SigLIP](https://arxiv.org/abs/2303.15343) v4 摘要 |
+| 语音与生成 | [Whisper](https://arxiv.org/abs/2212.04356)、[DDPM](https://arxiv.org/abs/2006.11239)、[Latent Diffusion](https://arxiv.org/abs/2112.10752) 摘要；语音合成未读取来源，正文已注明不展开 |
+| AI 产品形态与交互 | Google PAIR [User Needs](https://pair.withgoogle.com/chapter/user-needs/)、[Mental Models](https://pair.withgoogle.com/chapter/mental-models/)、[Errors](https://pair.withgoogle.com/chapter/errors-failing/)、[Explainability](https://pair.withgoogle.com/chapter/explainability-trust/) 全章；Microsoft [HAX AI Guidelines](https://www.microsoft.com/en-us/haxtoolkit/ai-guidelines/) |
+| 成本、上线与治理 | NIST [AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) 整页：自愿框架、四功能与版本日期；[Model Cards](https://arxiv.org/abs/1810.03993) 摘要；成本结构为归纳，未引用价格数字 |
+
+本次没有读取成功或内容不符的来源已排除：LangChain 切分文档、Azure 安全裁剪与增量扩充页面均返回 404；arXiv 1503.05991 经核对不是 Hidden Technical Debt 一文，未使用；OpenAI 评测平台文档只用于确认其只读与关停日期，未写入笔记。站点页面截断时改用同项目的 GitHub Markdown 原文，表中已注明。

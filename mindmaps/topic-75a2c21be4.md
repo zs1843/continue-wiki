@@ -1,7 +1,7 @@
 ---
 generated_by: note-mindmaps
 title: "AI架构"
-slug: topic-e7fec533f9
+slug: topic-75a2c21be4
 ---
 
 # AI架构

@@ -43,6 +43,8 @@ mindmap:
 
 这些是教材用来说明结构与训练目标的代表，不是说 BERT 只能分类，或所有 Transformer 都只能聊天。[2] [Attention](/notes/attention-and-transformer/)解释其中的信息交互，[Embedding](/notes/embeddings-and-similarity/)解释数值表示。
 
+改参数的具体做法见[指令微调](/notes/fine-tuning-sft/)、[LoRA 与 QLoRA](/notes/lora-peft/)与[偏好优化](/notes/preference-optimization/)；部署后的显存与延迟问题见[推理运行](/notes/inference-and-kv-cache/)与[量化](/notes/quantization/)。
+
 ## 参考
 
 1. Jurafsky、Martin，《Speech and Language Processing》，2026-08-19 第 3 版在线草稿，[第 7 章](https://web.stanford.edu/~jurafsky/slp3/7.pdf) §7.7：自监督下一 Token 训练、交叉熵与参数更新。损失数字为按该定义自拟计算，非实验结果。

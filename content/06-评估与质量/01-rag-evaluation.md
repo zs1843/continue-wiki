@@ -2,7 +2,7 @@
 title: 检索与回答评估：找对材料和答对问题分开看
 slug: rag-evaluation-basics
 status: published
-order: 40
+order: 10
 updated: "2026-11-19"
 mindmap:
   - label: "精确率看找得准，召回率看找得全"
@@ -48,7 +48,7 @@ mindmap:
 
 为每个测试问题记录预期证据、可接受答案边界、实际输出和失败原因。修改切分、检索或提示后，用同一组问题比较；再补充新发现的边界问题，避免只对几个熟悉例子变好。
 
-这是一份入门检查方法，尚不是完整评测框架。它与[软件测试反馈](/notes/testing-feedback-loops/)互补：程序能正常执行是基础，找到的证据与生成结论是否合适，还要另行判断。回到 [RAG](/notes/rag/)可以逐步定位整条链路。
+这是一份入门检查方法，尚不是完整评测框架。[评测集与评分器](/notes/evaluation-sets/)讨论任务设计与评分器选择，[回归与线上评估](/notes/regression-and-online-evaluation/)处理上线后的信号。它与[软件测试反馈](/notes/testing-feedback-loops/)互补：程序能正常执行是基础，找到的证据与生成结论是否合适，还要另行判断。回到 [RAG](/notes/rag/)可以逐步定位整条链路。
 
 ## 参考
 

@@ -1,7 +1,7 @@
 ---
 generated_by: note-mindmaps
 title: "安全与治理"
-slug: topic-cfb6911476
+slug: topic-eb3af8d973
 ---
 
 # 安全与治理

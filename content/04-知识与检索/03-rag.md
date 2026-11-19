@@ -56,6 +56,8 @@ mindmap:
 
 检索到的资料应视为不可信输入：文档里可能夹带改变模型行为的指令，资料权限也要在检索层过滤。相关讨论见[提示注入](/notes/prompt-injection/)与[数据隔离](/notes/sensitive-data-isolation/)。
 
+把资料接入系统还有三个工程环节：[文档解析与切分](/notes/document-parsing-chunking/)、[混合检索与查询改写](/notes/hybrid-retrieval/)、[检索的权限与更新](/notes/retrieval-permissions-updates/)。
+
 ## 参考
 
 1. Jurafsky、Martin，《Speech and Language Processing》，2026-08-19 第 3 版在线草稿，[第 11 章](https://web.stanford.edu/~jurafsky/slp3/11.pdf) §11.3–11.4：片段检索与条件生成。图和表为个人笔记库场景下的解释性设计，未声称是原书系统或本站已实现功能。
