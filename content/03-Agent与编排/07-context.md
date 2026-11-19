@@ -2,7 +2,7 @@
 title: 上下文工程
 slug: context-engineering
 status: published
-order: 10
+order: 70
 updated: "2026-11-19"
 mindmap:
   - label: "选择、组织与维护上下文"
@@ -66,6 +66,8 @@ mindmap:
 ## 与其他概念的关系
 
 [Prompt](/notes/prompt-context-harness/)关注任务与指令怎样表达，上下文工程把范围扩大到模型当前可见的全部相关信息。[Subagent](/notes/subagents/)是管理局部探索的一种方式；[Agent Loop](/notes/agent-loop/)则会不断产生需要整理的新信息。
+
+[记忆与状态](/notes/memory-and-state/)进一步区分会话内的状态与跨会话的长期记忆，并讨论写入、召回、纠错与遗忘。
 
 [Token](/notes/tokens-and-tokenization/)解释输入容量的计量单位；[RAG](/notes/rag/)说明怎样从外部资料选择内容放进上下文。资料进入本次输入，与通过[训练](/notes/training-and-inference/)更新模型参数是不同过程。
 

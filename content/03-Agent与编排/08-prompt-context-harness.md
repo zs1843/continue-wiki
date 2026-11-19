@@ -2,7 +2,7 @@
 title: Prompt / Context / Harness
 slug: prompt-context-harness
 status: published
-order: 20
+order: 80
 updated: "2026-11-19"
 mindmap:
   - label: "Prompt：表达任务与约束"

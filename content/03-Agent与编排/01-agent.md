@@ -67,6 +67,8 @@ mindmap:
 
 [Coding Agent](/notes/coding-agent/)把这种目标驱动的执行方式用于软件开发；[Harness 工程](/notes/harness-engineering/)则负责组织工具、状态、验证与恢复，让 Agent 的行动能够在工程环境里持续运行。
 
+什么时候该用 Agent、什么时候固定流程就够，见[架构选型](/notes/architecture-selection/)；Agent 需要跨轮次保留信息时，见[记忆与状态](/notes/memory-and-state/)。
+
 ## 参考
 
 1. Anthropic，[Building effective agents](https://www.anthropic.com/research/building-effective-agents)，What are agents?、Agents。

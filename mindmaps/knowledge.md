@@ -6,7 +6,46 @@ slug: knowledge
 
 # 知识总览
 
-## Agent基础
+## 模型基础
+
+- [Token：文本怎样进入模型](/notes/tokens-and-tokenization/)
+  - [Token 不等于字或词](/notes/tokens-and-tokenization/#%E6%96%87%E6%9C%AC%E5%85%88%E8%A2%AB%E5%88%87%E6%88%90%E7%A6%BB%E6%95%A3%E5%8D%95%E5%85%83)
+  - [BPE 学习合并规则](/notes/tokens-and-tokenization/#bpe-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AD%90%E8%AF%8D)
+  - [编号与向量有不同职责](/notes/tokens-and-tokenization/#%E4%BB%8E%E7%BC%96%E5%8F%B7%E5%88%B0%E5%90%91%E9%87%8F)
+- [语言模型：预测下一个 Token 与生成文本](/notes/language-model-generation/)
+  - [用条件概率描述下一步](/notes/language-model-generation/#%E9%A2%84%E6%B5%8B%E7%9A%84%E6%98%AF%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87)
+  - [生成结果重新成为输入](/notes/language-model-generation/#%E8%87%AA%E5%9B%9E%E5%BD%92%E6%80%8E%E6%A0%B7%E5%BD%A2%E6%88%90%E6%95%B4%E6%AE%B5%E5%9B%9E%E7%AD%94)
+  - [解码策略决定怎样选择](/notes/language-model-generation/#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E4%B9%8B%E5%90%8E%E8%BF%98%E8%A6%81%E5%81%9A%E9%80%89%E6%8B%A9)
+- [Attention 与 Transformer：让表示结合上下文](/notes/attention-and-transformer/)
+  - [按匹配权重汇总信息](/notes/attention-and-transformer/#attention-%E6%98%AF%E5%8A%A0%E6%9D%83%E6%B1%87%E6%80%BB)
+  - [qkv-分别承担匹配与取值](/notes/attention-and-transformer/#qkv-%E4%B8%8D%E6%98%AF%E4%B8%89%E6%AE%B5%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC)
+  - [Transformer 还包括其他组件](/notes/attention-and-transformer/#%E4%BB%8E-attention-%E5%88%B0-transformer)
+- [训练与推理：参数、输入与能力适配](/notes/training-and-inference/)
+  - [训练改变参数，推理使用参数](/notes/training-and-inference/#%E8%AE%AD%E7%BB%83%E5%92%8C%E6%8E%A8%E7%90%86%E6%94%B9%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E4%B8%8D%E5%90%8C)
+  - [上下文示例不等于参数更新](/notes/training-and-inference/#%E9%A2%84%E8%AE%AD%E7%BB%83%E5%BE%AE%E8%B0%83%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%A4%BA%E4%BE%8B)
+  - [三种 Transformer 组织方式](/notes/training-and-inference/#%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8%E6%80%8E%E6%A0%B7%E5%8C%BA%E5%88%86)
+
+## 知识与检索
+
+- [Embedding：用向量表示语义与比较相似性](/notes/embeddings-and-similarity/)
+  - [表示学习把文本映射为向量](/notes/embeddings-and-similarity/#%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%80%8E%E6%A0%B7%E5%B8%AE%E5%8A%A9%E6%AF%94%E8%BE%83)
+  - [余弦比较方向](/notes/embeddings-and-similarity/#%E7%94%A8%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4%E4%BE%8B%E5%AD%90%E7%90%86%E8%A7%A3%E4%BD%99%E5%BC%A6)
+  - [相似不等于事实一致](/notes/embeddings-and-similarity/#%E6%A3%80%E7%B4%A2%E5%88%86%E6%95%B0%E7%9A%84%E8%BE%B9%E7%95%8C)
+- [检索与重排序：先找候选，再细看相关性](/notes/retrieval-and-reranking/)
+  - [关键词与语义提供不同匹配线索](/notes/retrieval-and-reranking/#%E4%B8%A4%E7%A7%8D%E5%8C%B9%E9%85%8D%E7%BA%BF%E7%B4%A2)
+  - [检索与重排序分两步](/notes/retrieval-and-reranking/#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%88%E5%8F%AC%E5%9B%9E%E5%86%8D%E9%87%8D%E6%8E%92)
+  - [候选规模不等于召回率](/notes/retrieval-and-reranking/#%E5%8F%AC%E5%9B%9E%E9%98%B6%E6%AE%B5%E4%B8%8E%E5%8F%AC%E5%9B%9E%E7%8E%87%E4%B8%8D%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B)
+- [RAG：让回答建立在可追溯的资料上](/notes/rag/)
+  - [先检索再结合资料生成](/notes/rag/#rag-%E8%BF%9E%E6%8E%A5%E6%A3%80%E7%B4%A2%E4%B8%8E%E7%94%9F%E6%88%90)
+  - [保留片段与原文的对应](/notes/rag/#%E6%96%87%E6%A1%A3%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E5%8F%AF%E7%94%A8%E8%AF%81%E6%8D%AE)
+  - [有引用仍要核对支持关系](/notes/rag/#%E7%94%A8%E7%AC%94%E8%AE%B0%E9%97%AE%E7%AD%94%E8%B5%B0%E4%B8%80%E9%81%8D)
+  - [RAG 不要求使用 Agent](/notes/rag/#%E4%B8%8E%E5%BE%AE%E8%B0%83%E5%92%8C-agent-%E7%9A%84%E5%85%B3%E7%B3%BB)
+- [检索与回答评估：找对材料和答对问题分开看](/notes/rag-evaluation-basics/)
+  - [精确率看找得准，召回率看找得全](/notes/rag-evaluation-basics/#%E7%94%A8%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%9B%86%E5%90%88%E8%AE%A1%E7%AE%97)
+  - [检索成功不等于回答成功](/notes/rag-evaluation-basics/#%E5%9B%9E%E7%AD%94%E8%BF%98%E9%9C%80%E8%A6%81%E5%8D%95%E7%8B%AC%E6%A0%B8%E5%AF%B9)
+  - [固定问题与证据用于比较](/notes/rag-evaluation-basics/#%E6%8A%8A%E5%A4%B1%E8%B4%A5%E6%A0%B7%E4%BE%8B%E7%95%99%E4%B8%8B%E6%9D%A5)
+
+## Agent与编排
 
 - [Agent 与 Function Calling](/notes/agent-and-function-calling/)
   - [模型动态选择行动](/notes/agent-and-function-calling/)
@@ -42,9 +81,6 @@ slug: knowledge
   - [方法复用与事件钩子](/notes/coding-agent/#%E6%96%B9%E6%B3%95%E5%A4%8D%E7%94%A8%E4%B8%8E%E8%BF%87%E7%A8%8B%E5%B9%B2%E9%A2%84)
   - [反馈驱动计划调整与子任务调度](/notes/coding-agent/#%E8%AE%A1%E5%88%92%E8%B0%83%E6%95%B4%E4%B8%8E%E5%AD%90%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6)
   - [上下文压缩与跨会话记忆](/notes/coding-agent/#%E8%AE%B0%E5%BF%86%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E6%B2%BB%E7%90%86)
-
-## 上下文与范式
-
 - [上下文工程](/notes/context-engineering/)
   - [选择、组织与维护上下文](/notes/context-engineering/)
   - [按需检索与上下文压缩](/notes/context-engineering/#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95)
@@ -56,9 +92,6 @@ slug: knowledge
   - [Context：当前可用信息](/notes/prompt-context-harness/#%E4%B8%89%E8%80%85%E5%88%86%E5%88%AB%E5%85%B3%E6%B3%A8%E4%BB%80%E4%B9%88)
   - [Harness：执行、验证与恢复](/notes/prompt-context-harness/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83)
   - [状态必须落盘，上下文会丢](/notes/prompt-context-harness/#%E4%B8%80%E6%AC%A1%E9%95%BF%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%BA%A7%E7%89%A9)
-
-## 能力扩展
-
 - [MCP：连接外部能力](/notes/mcp/)
   - [Host / Client / Server](/notes/mcp/#%E4%B8%89%E4%B8%AA%E8%A7%92%E8%89%B2)
   - [initialize：版本与能力协商](/notes/mcp/#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%91%E7%8E%B0%E4%B8%8E%E8%B0%83%E7%94%A8)
@@ -75,6 +108,24 @@ slug: knowledge
   - [负向约束](/notes/skills/#%E8%B4%9F%E5%90%91%E7%BA%A6%E6%9D%9F)
   - [Skill 组织方法，MCP 连接能力](/notes/skills/#%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB)
   - [复用评判标准与检查脚本](/notes/skills/#%E6%89%BF%E8%BD%BD%E4%B8%93%E4%B8%9A%E8%AF%84%E5%88%A4%E6%96%B9%E6%B3%95)
+- [记忆与状态：会话、长期记忆与遗忘](/notes/memory-and-state/)
+  - [短期记忆按会话保存](/notes/memory-and-state/#%E4%B8%A4%E7%A7%8D%E8%AE%B0%E5%BF%86%E6%8C%89%E8%8C%83%E5%9B%B4%E5%8C%BA%E5%88%86)
+  - [长期记忆分为语义、情景与程序](/notes/memory-and-state/#%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%9A%84%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B)
+  - [写入可放在主路径或后台](/notes/memory-and-state/#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%86%99%E5%85%A5%E8%AE%B0%E5%BF%86)
+  - [召回之后仍要处理过时与冲突](/notes/memory-and-state/#%E7%BA%A0%E9%94%99%E4%B8%8E%E9%81%97%E5%BF%98)
+
+## AI架构
+
+- [AI 架构学习入口：从文本计算到有依据的回答](/notes/ai-architecture-learning-path/)
+  - [先理解表示与生成](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%B8%80%E6%AD%A5%E6%A8%A1%E5%9E%8B%E7%A9%B6%E7%AB%9F%E5%9C%A8%E8%AE%A1%E7%AE%97%E4%BB%80%E4%B9%88)
+  - [再理解检索与知识接入](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E6%80%8E%E6%A0%B7%E6%8A%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E8%B5%84%E6%96%99%E4%BA%A4%E7%BB%99%E6%A8%A1%E5%9E%8B)
+  - [用分层证据评价系统](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%B8%89%E6%AD%A5%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E7%B3%BB%E7%BB%9F%E6%9C%89%E6%95%88)
+  - [按任务选择结构，守住行动边界](/notes/ai-architecture-learning-path/#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E7%B3%BB%E7%BB%9F%E6%80%8E%E6%A0%B7%E7%BB%84%E7%BB%87%E8%A1%8C%E5%8A%A8%E4%B8%8E%E8%BE%B9%E7%95%8C)
+- [架构选型：从单次调用到 Agent](/notes/architecture-selection/)
+  - [控制路径由代码还是模型决定](/notes/architecture-selection/#%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8E-agent-%E7%9A%84%E5%88%86%E7%95%8C)
+  - [先简单，再按需增加结构](/notes/architecture-selection/#%E5%85%88%E9%80%89%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%A1%88)
+  - [五种工作流各自解决一类问题](/notes/architecture-selection/#%E4%BA%94%E7%A7%8D%E5%B8%B8%E8%A7%81%E5%B7%A5%E4%BD%9C%E6%B5%81)
+  - [自主决策只在步骤无法预测时使用](/notes/architecture-selection/#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8-agent)
 
 ## Harness工程
 
@@ -156,6 +207,24 @@ slug: knowledge
   - [STATE.md / CONTEXT.md 保存状态](/notes/gsd/#%E9%98%B6%E6%AE%B5%E5%BE%AA%E7%8E%AF)
   - [状态与上下文分别落盘](/notes/gsd/#%E4%B8%80%E4%B8%AA%E9%98%B6%E6%AE%B5%E9%87%8C%E7%95%99%E4%B8%8B%E7%9A%84%E6%9D%90%E6%96%99)
 
+## 安全与治理
+
+- [提示注入：当资料被当成指令](/notes/prompt-injection/)
+  - [直接注入来自用户输入](/notes/prompt-injection/#%E4%B8%A4%E7%A7%8D%E6%B3%A8%E5%85%A5%E8%B7%AF%E5%BE%84)
+  - [间接注入藏在被读取的资料里](/notes/prompt-injection/#%E4%B8%A4%E7%A7%8D%E6%B3%A8%E5%85%A5%E8%B7%AF%E5%BE%84)
+  - [模型在同一通道里读指令与数据](/notes/prompt-injection/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9A%BE%E4%BB%A5%E6%A0%B9%E6%B2%BB)
+  - [缓解靠隔离、权限与审批](/notes/prompt-injection/#%E7%BC%93%E8%A7%A3%E6%8E%AA%E6%96%BD%E4%B8%8E%E8%BE%B9%E7%95%8C)
+- [过度自主：功能、权限与审批](/notes/excessive-agency/)
+  - [三种过度：功能、权限、自主](/notes/excessive-agency/#%E4%B8%89%E7%A7%8D%E8%BF%87%E5%BA%A6)
+  - [授权在下游执行，不靠模型判断](/notes/excessive-agency/#%E6%8A%8A%E6%8E%88%E6%9D%83%E6%94%BE%E5%9B%9E%E4%B8%8B%E6%B8%B8)
+  - [专用工具优于 shell 与开放接口](/notes/excessive-agency/#%E9%81%BF%E5%85%8D%E5%BC%80%E6%94%BE%E5%BC%8F%E5%B7%A5%E5%85%B7)
+  - [高风险动作保留人工审批](/notes/excessive-agency/#%E7%94%A8%E5%AE%A1%E6%89%B9%E6%94%B6%E4%BD%8F%E9%AB%98%E9%A3%8E%E9%99%A9%E5%8A%A8%E4%BD%9C)
+- [数据隔离：敏感信息与检索边界](/notes/sensitive-data-isolation/)
+  - [泄露发生在输出、训练与检索上下文](/notes/sensitive-data-isolation/#%E4%B8%89%E6%9D%A1%E6%B3%84%E9%9C%B2%E8%B7%AF%E5%BE%84)
+  - [权限过滤要在检索与存储层执行](/notes/sensitive-data-isolation/#%E6%8A%8A%E8%BF%87%E6%BB%A4%E6%94%BE%E5%9C%A8%E6%A3%80%E7%B4%A2%E4%B8%8E%E5%AD%98%E5%82%A8%E5%B1%82)
+  - [记忆与日志也要按用户隔离](/notes/sensitive-data-isolation/#%E8%AE%B0%E5%BF%86%E6%97%A5%E5%BF%97%E4%B8%8E%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE)
+  - [系统提示约束不能替代访问控制](/notes/sensitive-data-isolation/#%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E4%B8%8D%E6%98%AF%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6)
+
 ## 工程案例
 
 - [CRM 案例：功能迭代与架构守护](/notes/crm-harness-case/)
@@ -195,49 +264,3 @@ slug: knowledge
   - [构建者负责目标、约束与验收](/notes/engineer-as-builder/#%E6%9E%84%E5%BB%BA%E8%80%85%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88)
   - [审视产物，也审视产生它的条件](/notes/engineer-as-builder/#%E5%AE%A1%E6%9F%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%90%91%E5%89%8D%E5%BB%B6%E4%BC%B8)
   - [组织知识需要可接续的载体](/notes/engineer-as-builder/#%E7%9F%A5%E8%AF%86%E6%80%8E%E6%A0%B7%E7%95%99%E5%9C%A8%E7%BB%84%E7%BB%87%E4%B8%AD)
-
-## 模型基础
-
-- [Token：文本怎样进入模型](/notes/tokens-and-tokenization/)
-  - [Token 不等于字或词](/notes/tokens-and-tokenization/#%E6%96%87%E6%9C%AC%E5%85%88%E8%A2%AB%E5%88%87%E6%88%90%E7%A6%BB%E6%95%A3%E5%8D%95%E5%85%83)
-  - [BPE 学习合并规则](/notes/tokens-and-tokenization/#bpe-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%AD%90%E8%AF%8D)
-  - [编号与向量有不同职责](/notes/tokens-and-tokenization/#%E4%BB%8E%E7%BC%96%E5%8F%B7%E5%88%B0%E5%90%91%E9%87%8F)
-- [语言模型：预测下一个 Token 与生成文本](/notes/language-model-generation/)
-  - [用条件概率描述下一步](/notes/language-model-generation/#%E9%A2%84%E6%B5%8B%E7%9A%84%E6%98%AF%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87)
-  - [生成结果重新成为输入](/notes/language-model-generation/#%E8%87%AA%E5%9B%9E%E5%BD%92%E6%80%8E%E6%A0%B7%E5%BD%A2%E6%88%90%E6%95%B4%E6%AE%B5%E5%9B%9E%E7%AD%94)
-  - [解码策略决定怎样选择](/notes/language-model-generation/#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E4%B9%8B%E5%90%8E%E8%BF%98%E8%A6%81%E5%81%9A%E9%80%89%E6%8B%A9)
-- [Attention 与 Transformer：让表示结合上下文](/notes/attention-and-transformer/)
-  - [按匹配权重汇总信息](/notes/attention-and-transformer/#attention-%E6%98%AF%E5%8A%A0%E6%9D%83%E6%B1%87%E6%80%BB)
-  - [qkv-分别承担匹配与取值](/notes/attention-and-transformer/#qkv-%E4%B8%8D%E6%98%AF%E4%B8%89%E6%AE%B5%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC)
-  - [Transformer 还包括其他组件](/notes/attention-and-transformer/#%E4%BB%8E-attention-%E5%88%B0-transformer)
-- [训练与推理：参数、输入与能力适配](/notes/training-and-inference/)
-  - [训练改变参数，推理使用参数](/notes/training-and-inference/#%E8%AE%AD%E7%BB%83%E5%92%8C%E6%8E%A8%E7%90%86%E6%94%B9%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E4%B8%8D%E5%90%8C)
-  - [上下文示例不等于参数更新](/notes/training-and-inference/#%E9%A2%84%E8%AE%AD%E7%BB%83%E5%BE%AE%E8%B0%83%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%A4%BA%E4%BE%8B)
-  - [三种 Transformer 组织方式](/notes/training-and-inference/#%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8%E6%80%8E%E6%A0%B7%E5%8C%BA%E5%88%86)
-
-## 检索与知识
-
-- [Embedding：用向量表示语义与比较相似性](/notes/embeddings-and-similarity/)
-  - [表示学习把文本映射为向量](/notes/embeddings-and-similarity/#%E5%90%91%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%80%8E%E6%A0%B7%E5%B8%AE%E5%8A%A9%E6%AF%94%E8%BE%83)
-  - [余弦比较方向](/notes/embeddings-and-similarity/#%E7%94%A8%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4%E4%BE%8B%E5%AD%90%E7%90%86%E8%A7%A3%E4%BD%99%E5%BC%A6)
-  - [相似不等于事实一致](/notes/embeddings-and-similarity/#%E6%A3%80%E7%B4%A2%E5%88%86%E6%95%B0%E7%9A%84%E8%BE%B9%E7%95%8C)
-- [检索与重排序：先找候选，再细看相关性](/notes/retrieval-and-reranking/)
-  - [关键词与语义提供不同匹配线索](/notes/retrieval-and-reranking/#%E4%B8%A4%E7%A7%8D%E5%8C%B9%E9%85%8D%E7%BA%BF%E7%B4%A2)
-  - [检索与重排序分两步](/notes/retrieval-and-reranking/#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%88%E5%8F%AC%E5%9B%9E%E5%86%8D%E9%87%8D%E6%8E%92)
-  - [候选规模不等于召回率](/notes/retrieval-and-reranking/#%E5%8F%AC%E5%9B%9E%E9%98%B6%E6%AE%B5%E4%B8%8E%E5%8F%AC%E5%9B%9E%E7%8E%87%E4%B8%8D%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B)
-- [RAG：让回答建立在可追溯的资料上](/notes/rag/)
-  - [先检索再结合资料生成](/notes/rag/#rag-%E8%BF%9E%E6%8E%A5%E6%A3%80%E7%B4%A2%E4%B8%8E%E7%94%9F%E6%88%90)
-  - [保留片段与原文的对应](/notes/rag/#%E6%96%87%E6%A1%A3%E6%80%8E%E6%A0%B7%E5%8F%98%E6%88%90%E5%8F%AF%E7%94%A8%E8%AF%81%E6%8D%AE)
-  - [有引用仍要核对支持关系](/notes/rag/#%E7%94%A8%E7%AC%94%E8%AE%B0%E9%97%AE%E7%AD%94%E8%B5%B0%E4%B8%80%E9%81%8D)
-  - [RAG 不要求使用 Agent](/notes/rag/#%E4%B8%8E%E5%BE%AE%E8%B0%83%E5%92%8C-agent-%E7%9A%84%E5%85%B3%E7%B3%BB)
-- [检索与回答评估：找对材料和答对问题分开看](/notes/rag-evaluation-basics/)
-  - [精确率看找得准，召回率看找得全](/notes/rag-evaluation-basics/#%E7%94%A8%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%9B%86%E5%90%88%E8%AE%A1%E7%AE%97)
-  - [检索成功不等于回答成功](/notes/rag-evaluation-basics/#%E5%9B%9E%E7%AD%94%E8%BF%98%E9%9C%80%E8%A6%81%E5%8D%95%E7%8B%AC%E6%A0%B8%E5%AF%B9)
-  - [固定问题与证据用于比较](/notes/rag-evaluation-basics/#%E6%8A%8A%E5%A4%B1%E8%B4%A5%E6%A0%B7%E4%BE%8B%E7%95%99%E4%B8%8B%E6%9D%A5)
-
-## AI架构
-
-- [AI 架构学习入口：从文本计算到有依据的回答](/notes/ai-architecture-learning-path/)
-  - [先理解表示与生成](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%B8%80%E6%AD%A5%E6%A8%A1%E5%9E%8B%E7%A9%B6%E7%AB%9F%E5%9C%A8%E8%AE%A1%E7%AE%97%E4%BB%80%E4%B9%88)
-  - [再理解检索与知识接入](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E6%80%8E%E6%A0%B7%E6%8A%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E8%B5%84%E6%96%99%E4%BA%A4%E7%BB%99%E6%A8%A1%E5%9E%8B)
-  - [用分层证据评价系统](/notes/ai-architecture-learning-path/#%E7%AC%AC%E4%B8%89%E6%AD%A5%E6%80%8E%E6%A0%B7%E7%9F%A5%E9%81%93%E7%B3%BB%E7%BB%9F%E6%9C%89%E6%95%88)

@@ -2,7 +2,7 @@
 title: MCP：连接外部能力
 slug: mcp
 status: published
-order: 10
+order: 90
 updated: "2026-11-19"
 mindmap:
   - label: "Host / Client / Server"
@@ -86,6 +86,8 @@ mindmap:
 在 [Harness 工程](/notes/harness-engineering/)中，MCP 可以提供执行与观测的连接通道。例如，为编译器、调试器或监控服务实现 MCP 工具后，Agent 可以调用工具、读取错误或运行指标，再据此决定下一步。这是工具调用机制的一种工程用法，不是规范规定的固定开发流程。[1][2]
 
 接入仍以服务实际提供的能力为前提；MCP 不会自动把任意编译器变成服务器，也不保证服务始终可用。直接命令行调用同样可以提供反馈。协议连接、运行可靠性与对结果的判断需要分别落实。
+
+服务器扩大了系统的信任边界：它返回的内容可能包含指令，它暴露的工具也可能权限过大。接入前应判断来源、权限与审批方式，相关风险见[提示注入](/notes/prompt-injection/)与[过度自主](/notes/excessive-agency/)。
 
 ## 参考
 

@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 41 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 46 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -60,3 +60,17 @@ Subagent 于 2026-11-19 补充分治类比、层级协作、专业化配置、�
 链接在各篇末尾保留。Introduction to Information Retrieval 的 Stanford 页面与 PDF 本次读取超时，没有据此声称核对或将其列为已使用的正文来源。额外查看 DPR 论文书目摘要，仅作背景，未代替教材正文或转述其效果数字。
 
 本批主题是“表示与生成 → 检索 → 有依据的回答 → 分层评估”。记忆治理、完整架构选型、安全、推理运行与多模态仍未纳入本批完成范围。
+
+## AI 架构、记忆与安全补入（2026-11-19）
+
+新增 5 篇笔记，并把 `content/` 按知识层级重排为模型、知识、编排、系统、工程、方法、治理、案例、反思九组；slug 与文章地址未变。教材与论文的引用只对应实际读取的部分，示例与归纳单独标注。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 架构选型 | Anthropic，[Building effective agents](https://www.anthropic.com/research/building-effective-agents)，2026-11-19 读取：工作流与 Agent 的区分、五种工作流、适用条件、成本与护栏建议。文中已提示工具生态自 2024 年 12 月起有变化。判断顺序与假设示例为归纳 |
+| 记忆与状态 | LangChain，[Memory overview](https://docs.langchain.com/oss/python/concepts/memory)，2026-11-19 读取：短期与长期记忆、语义／情景／程序记忆、资料档与集合、主路径与后台写入、namespace 存储与召回；OpenAI，[Agents SDK Sessions](https://openai.github.io/openai-agents-python/sessions/)，同日读取：历史取回与写回、`limit`、`pop_item`、压缩与恢复，页面读到 Memory operations 之前；Packer 等，[MemGPT](https://arxiv.org/abs/2310.08560)，arXiv v2，2024-02-12，仅读摘要 |
+| 提示注入 | OWASP，[LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)。站点正文在抓取时被截断，改以项目仓库的 [Markdown 原文](https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM01_PromptInjection.md)核对，2026-11-19：定义、两种路径、影响与七类缓解措施；Greshake 等，[arXiv 2302.12173v2](https://arxiv.org/abs/2302.12173)，仅读摘要；Simon Willison，[Prompt injection attacks against GPT-3](https://simonwillison.net/2022/Sep/12/prompt-injection/)，2022-09-12 |
+| 过度自主 | OWASP，[LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)，同样以仓库 [Markdown 原文](https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM06_ExcessiveAgency.md)核对，2026-11-19：三类根因、缓解措施与场景；客服退款例子为自拟 |
+| 数据隔离 | OWASP，[LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)，以仓库 [Markdown 原文](https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM02_SensitiveInformationDisclosure.md)核对，2026-11-19：敏感信息类型、泄露路径、缓解措施与系统提示限制不可靠的说明；多租户例子为自拟 |
+
+OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断页面当作已读正文；仓库原文与站点条目同属该项目的 2025 版列表。arXiv 论文只读摘要，没有转述实验数字。LangChain 与 OpenAI 文档是具体实现的说明，不当作通用标准。
