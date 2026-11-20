@@ -1,3 +1,5 @@
+import { activeHeadingIndex } from '../lib/outline.mjs';
+
 const storage = {
   get(key: string) { try { return localStorage.getItem(key); } catch { return null; } },
   set(key: string, value: string) { try { localStorage.setItem(key, value); } catch { /* 阅读不依赖存储权限 */ } },
@@ -53,7 +55,7 @@ supportsPin.addEventListener('change', () => {
 });
 syncLayout();
 
-document.querySelectorAll<HTMLElement>('.prose h2[id], .prose h3[id]').forEach(heading => {
+document.querySelectorAll<HTMLElement>('.prose :is(h1,h2,h3,h4,h5,h6)[id]').forEach(heading => {
   if (heading.querySelector('a')) return;
   const anchor = document.createElement('a');
   anchor.href = `#${heading.id}`;
@@ -119,3 +121,41 @@ dialog.addEventListener('close', () => searchTrigger?.focus());
 document.addEventListener('keydown', event => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); if (!dialog.open) openSearch(); }
 });
+
+// Keep the outline in sync with the document; only scroll its own list when following.
+const outline = document.querySelector<HTMLElement>('.outline-nav');
+if (outline) {
+  const entries = [...outline.querySelectorAll<HTMLAnchorElement>('a[data-heading-id]')]
+    .map(link => ({ link, heading: document.getElementById(link.dataset.headingId ?? '') }))
+    .filter((entry): entry is { link: HTMLAnchorElement; heading: HTMLElement } => entry.heading !== null);
+  let active = -1;
+  let scheduled = false;
+  function updateOutline() {
+    scheduled = false;
+    const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const readingLine = Math.max(padding, document.querySelector('.topbar')!.getBoundingClientRect().bottom + 24) + 8;
+    const atEnd = window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    const next = activeHeadingIndex(entries.map(({ heading }) => heading.getBoundingClientRect().top), readingLine, atEnd);
+    if (next === active) return;
+    if (active >= 0) entries[active].link.removeAttribute('aria-current');
+    active = next;
+    if (active < 0) return;
+    const link = entries[active].link;
+    link.setAttribute('aria-current', 'location');
+    const viewport = outline!.getBoundingClientRect();
+    const item = link.getBoundingClientRect();
+    if (viewport.height && item.top < viewport.top + 8) outline!.scrollTop -= viewport.top + 8 - item.top;
+    else if (viewport.height && item.bottom > viewport.bottom - 8) outline!.scrollTop += item.bottom - viewport.bottom + 8;
+  }
+  function scheduleOutline() {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(updateOutline); }
+  }
+  window.addEventListener('scroll', scheduleOutline, { passive: true });
+  window.addEventListener('resize', scheduleOutline);
+  window.addEventListener('hashchange', scheduleOutline);
+  window.addEventListener('pageshow', scheduleOutline);
+  const prose = document.querySelector('.prose');
+  if (prose) new ResizeObserver(scheduleOutline).observe(prose);
+  document.fonts.ready.then(scheduleOutline);
+  updateOutline();
+}

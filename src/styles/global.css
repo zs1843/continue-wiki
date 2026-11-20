@@ -50,3 +50,24 @@ html[data-sidebar-mode='floating'] .drawer-open .sidebar { visibility: visible; 
 /* 正文配图按阅读区缩放；链接到原图时可单独打开查看细节。 */
 .prose img{display:block;max-width:100%;height:auto;margin:24px auto;border:1px solid var(--line);border-radius:8px;background:#fff}
 .prose a:has(>img){display:block;border:0;padding:0}
+
+/* 文章大纲只占用宽屏余量；目录、正文和大纲分别管理自己的滚动。 */
+.reading-outline{display:none}
+.prose :is(h1,h2,h3,h4,h5,h6){scroll-margin-top:0}
+.prose :is(h1,h4,h5,h6)>.heading-anchor{border:0;color:inherit}
+.prose :is(h1,h4,h5,h6):hover .heading-anchor{opacity:1}
+@media(min-width:1200px){
+  .reading-layout-with-outline{display:grid;grid-template-columns:minmax(0,908px) 220px;gap:28px;max-width:1220px;margin:0 auto;padding:0 28px}
+  .reading-layout-with-outline>.article{width:100%;min-width:0;margin:0;padding-left:24px;padding-right:24px}
+  .reading-outline{display:block;min-width:0;padding-top:58px}
+  .outline-sticky{position:sticky;top:84px;max-height:calc(100dvh - 112px);display:flex;flex-direction:column}
+  .outline-title{flex:none;margin:0 0 16px;padding-left:14px;color:var(--ink);font-size:14px;font-weight:550}
+  .outline-nav{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#d5dbd1 transparent;padding:2px 4px 16px 0;min-height:0}
+  .outline-nav ol{list-style:none;margin:0;padding:0}
+  .outline-nav>ol{border-left:1px solid var(--line)}
+  .outline-nav ol ol{padding-left:14px}
+  .outline-nav a{display:block;position:relative;padding:7px 10px 7px 14px;color:var(--muted);font-size:14px;line-height:1.6;overflow-wrap:anywhere;border-radius:0 4px 4px 0}
+  .outline-nav a:hover{color:var(--green);background:#f7f9f5}
+  .outline-nav a[aria-current='location']{color:var(--green);background:var(--wash);font-weight:550}
+  .outline-nav a[aria-current='location']:before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:2px;border-radius:1px;background:var(--green)}
+}

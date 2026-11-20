@@ -8,6 +8,6 @@ const note = (await publishedNotes())[0];
 const content = note ? await render(note) : undefined;
 const Content = content?.Content;
 ---
-<Notebook title={note?.data.title ?? '还没有笔记'} current={note?.data.slug} folders={note?.folders} updated={note?.data.updated} indexable={false}>
+<Notebook title={note?.data.title ?? '还没有笔记'} current={note?.data.slug} folders={note?.folders} updated={note?.data.updated} indexable={false} headings={content?.headings ?? []}>
   {Content ? <Content /> : <p>还没有公开的笔记。</p>}
 </Notebook>

@@ -6,8 +6,8 @@ export async function getStaticPaths() {
   return (await publishedNotes()).map(note => ({ params: { slug: note.data.slug }, props: { note } }));
 }
 const { note } = Astro.props as { note: Note };
-const { Content } = await render(note);
+const { Content, headings } = await render(note);
 ---
-<Notebook title={note.data.title} current={note.data.slug} folders={note.folders} updated={note.data.updated}>
+<Notebook title={note.data.title} current={note.data.slug} folders={note.folders} updated={note.data.updated} headings={headings}>
   <Content />
 </Notebook>

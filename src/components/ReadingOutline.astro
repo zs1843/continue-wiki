@@ -1,0 +1,14 @@
+---
+import OutlineBranch from './OutlineBranch.astro';
+import { buildOutline, type Heading } from '../lib/outline.mjs';
+interface Props { headings: Heading[]; }
+const { headings } = Astro.props;
+---
+<aside class="reading-outline" aria-label="阅读大纲" data-pagefind-ignore>
+  <div class="outline-sticky">
+    <h2 class="outline-title" id="reading-outline-title">本页大纲</h2>
+    <nav class="outline-nav" aria-labelledby="reading-outline-title">
+      <OutlineBranch nodes={buildOutline(headings)} />
+    </nav>
+  </div>
+</aside>

@@ -1,5 +1,7 @@
 ---
 import Directory from '../components/Directory.astro';
+import ReadingOutline from '../components/ReadingOutline.astro';
+import type { Heading } from '../lib/outline.mjs';
 import { buildTree, publishedNotes } from '../lib/notes';
 import { publishedMindmaps } from '../lib/mindmaps';
 import '../styles/global.css';
@@ -12,11 +14,13 @@ interface Props {
   indexable?: boolean;
   currentMap?: string;
   wide?: boolean;
+  headings?: Heading[];
 }
-const { title, current = '', currentMap = '', wide = false, folders = [], updated, description = '来自书籍与文章的概念笔记，通过定义、解释、示例与来源建立知识之间的联系。', indexable = true } = Astro.props;
+const { title, headings = [], current = '', currentMap = '', wide = false, folders = [], updated, description = '来自书籍与文章的概念笔记，通过定义、解释、示例与来源建立知识之间的联系。', indexable = true } = Astro.props;
 const notes = await publishedNotes();
 const mindmaps = await publishedMindmaps();
 const tree = buildTree(notes);
+const hasOutline = !wide && headings.length > 0;
 const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.url.pathname, Astro.site) : undefined;
 ---
 <!doctype html>
@@ -98,6 +102,7 @@ const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.ur
         <button class="mobile-search search-trigger" aria-label="搜索笔记">⌕</button>
       </header>
       <main id="content" tabindex="-1">
+        <div class:list={['reading-layout', { 'reading-layout-with-outline': hasOutline }]}>
         <article class:list={['article', { 'article-wide': wide }]} data-pagefind-body={indexable ? '' : undefined}>
           <header class="article-header">
             <h1 data-pagefind-meta="title">{title}</h1>
@@ -106,6 +111,8 @@ const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.ur
           <div class="prose"><slot /></div>
           <footer class="article-footer" data-pagefind-ignore><a href="#content">回到顶部 ↑</a></footer>
         </article>
+        {hasOutline && <ReadingOutline headings={headings} />}
+        </div>
       </main>
     </div>
     <dialog id="search-dialog" aria-label="搜索笔记">
