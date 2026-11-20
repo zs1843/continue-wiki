@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 61 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 63 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -98,3 +98,12 @@ OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断�
 | 成本、上线与治理 | NIST [AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) 整页：自愿框架、四功能与版本日期；[Model Cards](https://arxiv.org/abs/1810.03993) 摘要；成本结构为归纳，未引用价格数字 |
 
 本次没有读取成功或内容不符的来源已排除：LangChain 切分文档、Azure 安全裁剪与增量扩充页面均返回 404；arXiv 1503.05991 经核对不是 Hidden Technical Debt 一文，未使用；OpenAI 评测平台文档只用于确认其只读与关停日期，未写入笔记。站点页面截断时改用同项目的 GitHub Markdown 原文，表中已注明。
+
+## 数学基础补入（2026-11-20）
+
+审计后先补两篇数学基础，放在 01 组。均只使用 D2L 在线版，公式与数字逐项核对；示例为自拟换算，不是实验结果。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 交叉熵与困惑度 | Zhang、Lipton、Li、Smola，《Dive into Deep Learning》1.0.3，[§4.1 Softmax Regression](https://d2l.ai/chapter_linear-classification/softmax-regression.html)，2026-11-20 读取 softmax 定义、交叉熵公式 4.1.8、对 logit 的导数 4.1.10，正文读到信息论基础开头；[§9.3 Language Models](https://d2l.ai/chapter_recurrent-neural-networks/language-model.html) 的 Perplexity 一节全文（原始 rst 源）。0.5 概率的换算示例为自拟 |
+| 梯度、过拟合与正则 | 同上，[§5.3 Backpropagation](https://d2l.ai/chapter_multilayer-perceptrons/backprop.html) 全文（链式法则、中间值与显存）；[§4.6 Generalization in Classification](https://d2l.ai/chapter_linear-classification/generalization-classification.html) 全文（测试误差估计、2500／10000／15000 样本、测试集复用与自适应过拟合）；[§3.7 Weight Decay](https://d2l.ai/chapter_linear-regression/weight-decay.html) 全文（L2 惩罚、更新式、L1 对比、200 维与 20 样本示例）。以上均为原始 rst 源，示例数字来自教材 |

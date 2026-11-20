@@ -30,6 +30,8 @@ mindmap:
 | [Attention 与 Transformer](/notes/attention-and-transformer/) | 不同位置的信息怎样结合，Q/K/V 分别做什么 |
 | [训练与推理](/notes/training-and-inference/) | 改输入、改参数和调用模型有什么不同 |
 
+损失与困惑度的计算见[交叉熵与困惑度](/notes/cross-entropy-and-perplexity/)；训练为什么需要约束见[梯度、过拟合与正则](/notes/gradient-overfitting-regularization/)。
+
 ## 第二步：模型怎样被训练与适配
 
 [指令微调](/notes/fine-tuning-sft/)用任务示范调整模型行为；[LoRA 与 QLoRA](/notes/lora-peft/)只训练少量参数；[偏好优化](/notes/preference-optimization/)用比较数据调整回答取舍。

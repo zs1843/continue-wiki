@@ -34,6 +34,17 @@ slug: knowledge
   - [训练改变参数，推理使用参数](/notes/training-and-inference/#%E8%AE%AD%E7%BB%83%E5%92%8C%E6%8E%A8%E7%90%86%E6%94%B9%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E4%B8%8D%E5%90%8C)
   - [上下文示例不等于参数更新](/notes/training-and-inference/#%E9%A2%84%E8%AE%AD%E7%BB%83%E5%BE%AE%E8%B0%83%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%A4%BA%E4%BE%8B)
   - [三种 Transformer 组织方式](/notes/training-and-inference/#%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E8%A7%A3%E7%A0%81%E5%99%A8%E6%80%8E%E6%A0%B7%E5%8C%BA%E5%88%86)
+- [交叉熵与困惑度：衡量模型预测得有多准](/notes/cross-entropy-and-perplexity/)
+  - [交叉熵衡量预测分布与真实标签的差距](/notes/cross-entropy-and-perplexity/#%E4%BA%A4%E5%8F%89%E7%86%B5%E8%A1%A1%E9%87%8F%E9%A2%84%E6%B5%8B%E5%88%86%E5%B8%83%E4%B8%8E%E7%9C%9F%E5%AE%9E%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B7%AE%E8%B7%9D)
+  - [softmax 把分数变成概率](/notes/cross-entropy-and-perplexity/#softmax-%E6%8A%8A%E5%88%86%E6%95%B0%E5%8F%98%E6%88%90%E6%A6%82%E7%8E%87)
+  - [困惑度是平均交叉熵的指数](/notes/cross-entropy-and-perplexity/#%E5%9B%B0%E6%83%91%E5%BA%A6%E6%98%AF%E5%B9%B3%E5%9D%87%E4%BA%A4%E5%8F%89%E7%86%B5%E7%9A%84%E6%8C%87%E6%95%B0)
+  - [数值要在相同词表下比较](/notes/cross-entropy-and-perplexity/#%E7%A4%BA%E4%BE%8B%E4%B8%8E%E8%BE%B9%E7%95%8C)
+- [梯度、过拟合与正则：训练为什么需要约束](/notes/gradient-overfitting-regularization/)
+  - [梯度由反向传播计算](/notes/gradient-overfitting-regularization/#%E6%A2%AF%E5%BA%A6%E7%94%B1%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E8%AE%A1%E7%AE%97)
+  - [训练比推理更占显存](/notes/gradient-overfitting-regularization/#%E8%AE%AD%E7%BB%83%E6%AF%94%E6%8E%A8%E7%90%86%E6%9B%B4%E5%8D%A0%E6%98%BE%E5%AD%98)
+  - [过拟合是训练误差与真实误差分离](/notes/gradient-overfitting-regularization/#%E8%BF%87%E6%8B%9F%E5%90%88%E6%98%AF%E8%AE%AD%E7%BB%83%E8%AF%AF%E5%B7%AE%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%AF%AF%E5%B7%AE%E5%88%86%E7%A6%BB)
+  - [测试集重复使用会失效](/notes/gradient-overfitting-regularization/#%E6%B5%8B%E8%AF%95%E9%9B%86%E9%87%8D%E5%A4%8D%E4%BD%BF%E7%94%A8%E4%BC%9A%E5%A4%B1%E6%95%88)
+  - [正则化限制参数规模](/notes/gradient-overfitting-regularization/#%E6%AD%A3%E5%88%99%E5%8C%96%E9%99%90%E5%88%B6%E5%8F%82%E6%95%B0%E8%A7%84%E6%A8%A1)
 
 ## 训练与适配
 

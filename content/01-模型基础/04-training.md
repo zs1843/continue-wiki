@@ -45,6 +45,8 @@ mindmap:
 
 改参数的具体做法见[指令微调](/notes/fine-tuning-sft/)、[LoRA 与 QLoRA](/notes/lora-peft/)与[偏好优化](/notes/preference-optimization/)；部署后的显存与延迟问题见[推理运行](/notes/inference-and-kv-cache/)与[量化](/notes/quantization/)。
 
+训练目标与评估口径的数学基础见[交叉熵与困惑度](/notes/cross-entropy-and-perplexity/)；梯度、过拟合与正则的关系见[梯度、过拟合与正则](/notes/gradient-overfitting-regularization/)。
+
 ## 参考
 
 1. Jurafsky、Martin，《Speech and Language Processing》，2026-08-19 第 3 版在线草稿，[第 7 章](https://web.stanford.edu/~jurafsky/slp3/7.pdf) §7.7：自监督下一 Token 训练、交叉熵与参数更新。损失数字为按该定义自拟计算，非实验结果。
