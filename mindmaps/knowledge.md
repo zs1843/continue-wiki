@@ -350,6 +350,11 @@ slug: knowledge
   - [上线要分级放量而不是一次全开](/notes/cost-launch-governance/#%E4%B8%8A%E7%BA%BF%E8%A6%81%E5%88%86%E7%BA%A7%E6%94%BE%E9%87%8F)
   - [风险治理分四个动作](/notes/cost-launch-governance/#%E9%A3%8E%E9%99%A9%E6%B2%BB%E7%90%86%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%8A%A8%E4%BD%9C)
   - [模型卡记录用途与评测](/notes/cost-launch-governance/#%E6%A8%A1%E5%9E%8B%E5%8D%A1%E8%AE%B0%E5%BD%95%E4%BB%80%E4%B9%88)
+- [组织与责任：从需求判断到退役](/notes/ai-organization-responsibility/)
+  - [先判断是否值得用](/notes/ai-organization-responsibility/#%E5%85%88%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E7%94%A8)
+  - [角色与责任要写清楚](/notes/ai-organization-responsibility/#%E8%A7%92%E8%89%B2%E4%B8%8E%E8%B4%A3%E4%BB%BB%E8%A6%81%E5%86%99%E6%B8%85%E6%A5%9A)
+  - [反馈要能解释并生效](/notes/ai-organization-responsibility/#%E5%8F%8D%E9%A6%88%E8%A6%81%E8%83%BD%E8%A7%A3%E9%87%8A%E5%B9%B6%E7%94%9F%E6%95%88)
+  - [上线后维护治理文档](/notes/ai-organization-responsibility/#%E4%B8%8A%E7%BA%BF%E5%90%8E%E7%BB%B4%E6%8A%A4%E6%B2%BB%E7%90%86%E6%96%87%E6%A1%A3)
 
 ## 工程案例
 

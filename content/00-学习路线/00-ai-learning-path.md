@@ -56,7 +56,7 @@ mindmap:
 
 ## 第六步：多模态与产品
 
-[视觉编码与跨模态对齐](/notes/vision-encoders/)把图片接入模型；[语音与生成](/notes/speech-and-generation/)覆盖识别、合成与扩散生成。落到产品时，[AI 产品形态与交互](/notes/ai-product-interaction/)讨论人机分工，[成本、上线与治理](/notes/cost-launch-governance/)处理运行代价与风险责任。
+[视觉编码与跨模态对齐](/notes/vision-encoders/)把图片接入模型；[语音与生成](/notes/speech-and-generation/)覆盖识别、合成与扩散生成。落到产品时，[AI 产品形态与交互](/notes/ai-product-interaction/)讨论人机分工，[组织与责任](/notes/ai-organization-responsibility/)说明需求判断、角色与治理文档，[成本、上线与治理](/notes/cost-launch-governance/)处理运行代价与风险责任。
 
 评测统计、推理引擎选型和更多产品案例还待补充。这里先串起已经整理的内容。
 
