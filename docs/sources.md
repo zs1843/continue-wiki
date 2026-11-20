@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 66 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 67 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -124,3 +124,11 @@ OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断�
 | --- | --- |
 | 文档理解与 OCR | Azure AI Document Intelligence，[Layout model v4.0](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/prebuilt/layout?view=doc-intel-4.0.0)，2026-11-20 读取至 Sections：输入格式、pages／paragraphs／lines／words／selection marks／tables／figures／sections、Markdown 表示与页数、大小、分辨率限制；[Overview](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview?view=doc-intel-4.0.0) 同日读取（页面截断），仅用于版本与模型定位 |
 | 结构化检索 | Microsoft，[GraphRAG README](https://raw.githubusercontent.com/microsoft/graphrag/main/README.md) 全文（索引管线、维护模式、成本提示）；[Indexing Overview](https://microsoft.github.io/graphrag/index/overview/) 与 [Query Overview](https://microsoft.github.io/graphrag/query/overview/) 全文（实体关系、社区摘要、Local／Global／DRIFT／Basic）；[Text-to-SQL 综述](https://arxiv.org/abs/2208.13629) 与 [BIRD](https://arxiv.org/abs/2305.03111v3) 仅读摘要（12,751 对、95 库、40.08% 与 92.96%） |
+
+## 多 Agent 编排（2026-11-20）
+
+新增一篇 05 组笔记。协议与 SDK 文档读正文，Anthropic 文章读正文；未读 LangGraph 多 Agent 文档，正文不比较。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 多 Agent 编排 | OpenAI，[Agents SDK: Multi-agent](https://openai.github.io/openai-agents-python/multi_agent/)，2026-11-20 读取正文：模型决策与代码编排、agents-as-tools 与 handoffs；A2A，[Key concepts](https://a2a-protocol.org/latest/topics/key-concepts/)、[Agent discovery](https://a2a-protocol.org/latest/topics/agent-discovery/)、[Life of a task](https://a2a-protocol.org/latest/topics/life-of-a-task/) 正文：角色、Agent Card、Task／Message／Part／Artifact、状态与传输；Anthropic，[How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system) 正文：90.2%、4 倍／15 倍 token、适用条件、规模与评测 |

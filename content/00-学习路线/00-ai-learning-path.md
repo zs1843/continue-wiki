@@ -50,7 +50,7 @@ mindmap:
 
 ## 第五步：系统怎样行动、评估与守住边界
 
-[Agent](/notes/agent-and-function-calling/)把工具调用组织成目标驱动的循环；[架构选型](/notes/architecture-selection/)决定流程由代码固定还是交给模型；[记忆与状态](/notes/memory-and-state/)负责跨会话保留信息。
+[Agent](/notes/agent-and-function-calling/)把工具调用组织成目标驱动的循环；[架构选型](/notes/architecture-selection/)决定流程由代码固定还是交给模型；[记忆与状态](/notes/memory-and-state/)负责跨会话保留信息；多 Agent 的分工与交接见[多 Agent 编排](/notes/multi-agent-orchestration/)。
 
 [评测集与评分器](/notes/evaluation-sets/)和[回归与线上评估](/notes/regression-and-online-evaluation/)回答“系统是否真的变好”；[提示注入](/notes/prompt-injection/)、[过度自主](/notes/excessive-agency/)、[数据隔离](/notes/sensitive-data-isolation/)划出能读什么、能做什么的边界。
 
