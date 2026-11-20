@@ -3,7 +3,7 @@ title: 工具 Schema
 slug: tool-schema
 status: published
 order: 20
-updated: "2026-11-17"
+updated: "2026-11-20"
 mindmap:
   - label: "字段类型与必填项"
     heading: "一个简化的参数定义"
@@ -63,9 +63,9 @@ mindmap:
 }
 ```
 
-三项分工不同：`name` 是调用时回传的标识；`description` 决定模型在什么情况下想到这个工具，也影响它怎么填参数；`input_schema` 约束输入。MCP 的 `tools/list` 返回的工具描述使用 `name`、`description`、`inputSchema`，字段名大小写不同，作用一致。[2]
+这三个字段分别负责：`name` 是调用时回传的标识；`description` 决定模型在什么情况下想到这个工具，也影响它怎么填参数；`input_schema` 约束输入。MCP 的 `tools/list` 返回的工具描述使用 `name`、`description`、`inputSchema`，字段名大小写不同，作用一致。[2]
 
-模型生成参数后仍需应用校验并执行。Schema 只描述输入，不表达权限与副作用；对会改动数据的工具，应用要在执行前检查调用者是否有权执行这次操作。
+模型生成参数后仍需应用校验并执行。Schema 描述输入；权限和副作用还需要另外处理。对会改动数据的工具，应用要在执行前检查调用者是否有权执行这次操作。
 
 ## 参考
 

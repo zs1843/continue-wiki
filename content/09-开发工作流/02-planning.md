@@ -3,7 +3,7 @@ title: 计划模式与 Superpowers 的对比
 slug: planning-and-superpowers
 status: published
 order: 20
-updated: "2026-11-17"
+updated: "2026-11-20"
 mindmap:
   - label: "产品模式与方法集不是一层"
     heading: "两者的区别"
@@ -11,7 +11,7 @@ mindmap:
     heading: "怎样组合"
 ---
 
-[计划模式](/notes/plan-mode/)是宿主提供的工作模式，[Superpowers](/notes/superpowers/) 是基于可组合 Skills 的开发方法集。二者常被放在一起比较，但不在同一层：一个管「何时开始改动」，一个管「从需求到验证整段路怎么走」。[1][2]
+[计划模式](/notes/plan-mode/)是宿主提供的工作模式，[Superpowers](/notes/superpowers/) 是基于可组合 Skills 的开发方法集。二者常被放在一起比较，但负责的事情不同：计划模式管「何时开始改动」，Superpowers 管「从需求到验证怎么走」。[1][2]
 
 ## 两者的区别
 
@@ -31,7 +31,7 @@ mindmap:
 
 Superpowers 的工作流里有需求讨论、设计确认与实施计划等环节；这些环节可以放进计划模式：让 Agent 先读代码、列出计划，用计划模式的批准机制确认方向，再进入执行。[1][2]
 
-要注意批准后会话会退出计划模式。后续执行是否仍按 Superpowers 的流程推进，取决于使用者是否继续遵循方法集；产品模式不会自动替方法论执行步骤。
+要注意批准后会话会退出计划模式。后续执行是否仍按 Superpowers 的流程推进，取决于使用者是否继续遵循方法集；切换产品模式不会自动执行方法集中的步骤。
 
 ## 什么时候用哪个
 

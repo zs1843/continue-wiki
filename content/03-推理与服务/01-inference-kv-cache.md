@@ -3,7 +3,7 @@ title: 推理运行：prefill、decode 与 KV Cache
 slug: inference-and-kv-cache
 status: published
 order: 10
-updated: "2026-11-19"
+updated: "2026-11-20"
 mindmap:
   - label: "prefill 一次读入，decode 逐个生成"
     heading: "prefill-与-decode-两阶段"
@@ -15,7 +15,7 @@ mindmap:
     heading: "指标怎样算"
 ---
 
-**推理运行** 是模型接收输入、逐 token 生成输出的过程。理解它，才能解释为什么上下文越长越慢、显存为什么不够，以及服务端为什么要把请求排队与批处理。
+**推理运行** 是模型接收输入、逐 token 生成输出的过程。了解这个过程，有助于判断上下文长度怎样影响速度、显存用在了哪里，以及服务端为何需要排队和批处理。
 
 ## prefill 与 decode 两阶段
 
@@ -48,7 +48,7 @@ vLLM 的指标文档按区间定义：prefill 从请求调度到首 token，deco
 - **KV Cache 使用率**：`kv_cache_usage_perc` 在 0 到 1 之间，反映显存压力。
 - **前缀缓存命中率**：相同前缀被复用的比例，vLLM 文档用 1k 查询的示例计算。
 
-这些指标要和业务指标一起看：TTFT 低但输出很长，端到端仍然慢；显存使用率高但排队少，可能只是批处理策略不同。
+判断服务表现时，还要结合业务指标：TTFT 低但输出很长，端到端仍然慢；显存使用率高但排队少，可能只是批处理策略不同。
 
 ## 边界
 

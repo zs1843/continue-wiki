@@ -3,7 +3,7 @@ title: Attention 与 Transformer：让表示结合上下文
 slug: attention-and-transformer
 status: published
 order: 30
-updated: "2026-11-19"
+updated: "2026-11-20"
 mindmap:
   - label: "按匹配权重汇总信息"
     heading: "attention-是加权汇总"
@@ -17,7 +17,7 @@ mindmap:
 
 ## Attention 是加权汇总
 
-可以用一个自拟的简化例子理解：当前位置对三个值向量的权重分别为 0.6、0.3、0.1，则汇总结果为：
+用一个自拟例子看加权汇总：当前位置对三个值向量的权重分别为 0.6、0.3、0.1，计算为：
 
 `输出 = 0.6 × 值1 + 0.3 × 值2 + 0.1 × 值3`
 
@@ -47,7 +47,7 @@ mindmap:
 | 归一化 | 调整数值尺度，帮助网络计算与训练 |
 | 位置信息 | 让模型能够利用顺序 |
 
-这是组件职责的入门归纳，不代表每个模型都采用相同排列。原始编码器—解码器 Transformer 与生成式 Decoder-only 模型也应区分，见[训练与推理](/notes/training-and-inference/)。[语言模型](/notes/language-model-generation/)说明最后怎样从表示得到生成过程。
+表格概括了各组件的作用，不同模型的排列方式会有差异。原始编码器—解码器 Transformer 与生成式 Decoder-only 模型也应区分，见[训练与推理](/notes/training-and-inference/)。[语言模型](/notes/language-model-generation/)说明最后怎样从表示得到生成过程。
 
 ## 参考
 

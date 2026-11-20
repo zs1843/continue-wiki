@@ -3,7 +3,7 @@ title: Token：文本怎样进入模型
 slug: tokens-and-tokenization
 status: published
 order: 10
-updated: "2026-11-19"
+updated: "2026-11-20"
 mindmap:
   - label: "Token 不等于字或词"
     heading: "文本先被切成离散单元"
@@ -17,7 +17,7 @@ mindmap:
 
 ## 文本先被切成离散单元
 
-例如，为了演示流程，假设一个玩具分词器把 `reviewing notes` 切为：
+假设有一个用于演示的分词器，把 `reviewing notes` 处理成下面的序列：
 
 | 阶段 | 演示结果 | 意义 |
 | --- | --- | --- |
@@ -36,9 +36,9 @@ mindmap:
 
 ## 从编号到向量
 
-编号只是身份，不表示相近关系：ID 为 17 与 18，不能据此推断意思相近。模型通过 Embedding 将编号映射为向量，后续再结合上下文处理。这一层与[语义向量](/notes/embeddings-and-similarity/)相关，但模型内部的 Token 向量不等于用于检索的整段文本向量。
+编号只用来区分 Token，不表示相近关系：ID 为 17 与 18，不能据此推断意思相近。模型通过 Embedding 将编号映射为向量，后续再结合上下文处理。这一层与[语义向量](/notes/embeddings-and-similarity/)相关，但模型内部的 Token 向量不等于用于检索的整段文本向量。
 
-可以把分词器理解为“约定输入字母表”，而不是“理解文本的完整算法”。知道一句话有多少 Token，有助于讨论[上下文](/notes/context-engineering/)容量，却不能据此判断模型是否理解正确。
+分词器约定了模型使用的输入单元；它只完成文本处理的一步，并不负责完整地理解文本。知道一句话有多少 Token，有助于讨论[上下文](/notes/context-engineering/)容量，却不能据此判断模型是否理解正确。
 
 ## 参考
 

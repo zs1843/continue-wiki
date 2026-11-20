@@ -3,7 +3,7 @@ title: Agent 与 Function Calling
 slug: agent-and-function-calling
 status: published
 order: 10
-updated: "2026-11-19"
+updated: "2026-11-20"
 mindmap:
   - label: "模型动态选择行动"
   - label: "Function Calling：工具名与参数"
@@ -29,7 +29,7 @@ mindmap:
 
 客户端工具由应用执行；服务端托管工具则由提供方运行。执行位置需要按具体接口区分。[2]
 
-例如，查找某个概念时，系统可以调用笔记搜索工具；如果结果不足，再换关键词、补充检索，直到获得足够依据。这个简化示例中，搜索工具提供能力，模型对后续步骤的选择体现了 Agent 的控制过程。
+例如，查找某个概念时，系统可以调用笔记搜索工具；如果结果不足，再换关键词、补充检索，直到获得足够依据。在这个例子中，工具负责搜索，模型根据结果选择后续步骤。
 
 ## 一次工具调用长什么样
 
@@ -65,7 +65,7 @@ mindmap:
 
 [工具 Schema](/notes/tool-schema/)描述一次调用需要哪些参数；[Agent Loop](/notes/agent-loop/)负责把调用、执行和反馈循环运行起来；[ReAct](/notes/react/)描述推理与行动怎样交替配合。
 
-[Coding Agent](/notes/coding-agent/)把这种目标驱动的执行方式用于软件开发；[Harness 工程](/notes/harness-engineering/)则负责组织工具、状态、验证与恢复，让 Agent 的行动能够在工程环境里持续运行。
+[Coding Agent](/notes/coding-agent/)把这种目标驱动的执行方式用于软件开发；[Harness 工程](/notes/harness-engineering/)则组织工具、状态、验证与恢复，让 Agent 能在工程环境里持续执行任务。
 
 什么时候该用 Agent、什么时候固定流程就够，见[架构选型](/notes/architecture-selection/)；Agent 需要跨轮次保留信息时，见[记忆与状态](/notes/memory-and-state/)。
 

@@ -3,7 +3,7 @@ title: 训练与推理：参数、输入与能力适配
 slug: training-and-inference
 status: published
 order: 40
-updated: "2026-11-19"
+updated: "2026-11-20"
 mindmap:
   - label: "训练改变参数，推理使用参数"
     heading: "训练和推理改动的对象不同"
@@ -13,7 +13,7 @@ mindmap:
     heading: "编码器与解码器怎样区分"
 ---
 
-**训练**根据数据与目标计算误差，再调整模型参数；**推理**使用已有参数处理新输入并产生输出。参数是模型计算中学到的数值，上下文则是本次任务提供的信息，两者不是同一层东西。[1][2]
+**训练**根据数据与目标计算误差，再调整模型参数；**推理**使用已有参数处理新输入并产生输出。参数是训练中学到的数值，上下文是本次任务提供的信息。[1][2]
 
 ## 训练和推理改动的对象不同
 
@@ -31,7 +31,7 @@ mindmap:
 
 **预训练**先从大量数据学习通用表示或生成能力；**微调**在已有模型基础上，用后续任务数据继续训练。**上下文学习**则把任务说明与少量示例放进输入，在不更新参数的情况下影响这次输出。[1][2]
 
-例如，希望摘要总是输出“定义、边界、关联”三个字段：可以先在提示中提供格式与示例；若进行微调，则需要形成训练数据并评估适配效果。前者是改输入，后者是改参数。至于回答一本新书的具体内容，应先考虑如何提供可靠资料，见 [RAG](/notes/rag/)，不能仅靠格式适配补足证据。
+例如，希望摘要总是包含“定义、边界、关联”三个字段，可以先在提示中提供格式与示例；若选择微调，则需要准备训练数据并评估适配效果。前者是改输入，后者是改参数。至于回答一本新书的具体内容，应先考虑如何提供可靠资料，见 [RAG](/notes/rag/)，不能仅靠格式适配补足证据。
 
 ## 编码器与解码器怎样区分
 
@@ -41,7 +41,7 @@ mindmap:
 | Decoder-only | 按因果约束组织下一 Token 预测 | GPT 系列的相关教材实例 |
 | Encoder–decoder | 先编码输入，解码器再结合输入表示生成输出 | T5 |
 
-这些是教材用来说明结构与训练目标的代表，不是说 BERT 只能分类，或所有 Transformer 都只能聊天。[2] [Attention](/notes/attention-and-transformer/)解释其中的信息交互，[Embedding](/notes/embeddings-and-similarity/)解释数值表示。
+教材用这些模型说明结构与训练目标，并未限定 BERT 只能分类，也未把 Transformer 的用途限于聊天。[2] [Attention](/notes/attention-and-transformer/)解释其中的信息交互，[Embedding](/notes/embeddings-and-similarity/)解释数值表示。
 
 改参数的具体做法见[指令微调](/notes/fine-tuning-sft/)、[LoRA 与 QLoRA](/notes/lora-peft/)与[偏好优化](/notes/preference-optimization/)；部署后的显存与延迟问题见[推理运行](/notes/inference-and-kv-cache/)与[量化](/notes/quantization/)。
 
