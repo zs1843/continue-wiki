@@ -37,11 +37,11 @@ mindmap:
 
 | 组织方式 | 信息处理特点 | 教材中的代表 |
 | --- | --- | --- |
-| Encoder-only | 编码输入，通常允许使用输入两侧信息 | BERT |
-| Decoder-only | 按因果约束组织下一 Token 预测 | GPT 系列的相关教材实例 |
-| Encoder–decoder | 先编码输入，解码器再结合输入表示生成输出 | T5 |
+| 仅编码器（Encoder-only） | 编码输入，通常允许使用输入两侧信息 | BERT |
+| 仅解码器（Decoder-only） | 按因果约束组织下一 Token 预测 | GPT 系列 |
+| 编码器—解码器（Encoder–decoder） | 先编码输入，解码器再结合输入表示生成输出 | T5 |
 
-教材用这些模型说明结构与训练目标，并未限定 BERT 只能分类，也未把 Transformer 的用途限于聊天。[2] [Attention](/notes/attention-and-transformer/)解释其中的信息交互，[Embedding](/notes/embeddings-and-similarity/)解释数值表示。
+表中的 BERT、GPT、T5 是教材用来说明这三种组织方式的模型家族，同一家族还有不同规模的版本。教材用这些模型说明结构与训练目标，并未限定 BERT 只能分类，也未把 Transformer 的用途限于聊天。[2] [Attention](/notes/attention-and-transformer/)解释其中的信息交互，[Embedding](/notes/embeddings-and-similarity/)解释数值表示。
 
 改参数的具体做法见[指令微调](/notes/fine-tuning-sft/)、[LoRA 与 QLoRA](/notes/lora-peft/)与[偏好优化](/notes/preference-optimization/)；部署后的显存与延迟问题见[推理运行](/notes/inference-and-kv-cache/)与[量化](/notes/quantization/)。
 

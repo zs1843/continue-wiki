@@ -31,7 +31,7 @@ mindmap:
 
 ## 工具怎样进入应用
 
-客户端可以通过 `tools/list` 发现服务器公开的工具，通过 `tools/call` 发起调用。每个工具有名称、描述和输入 Schema 等信息。[2]
+客户端可以通过 `tools/list` 发现服务器公开的工具，通过 `tools/call` 发起调用。每个工具有名称、描述和输入模式（Schema，描述参数结构的定义）等信息。[2]
 
 例如，笔记服务可以公开搜索工具。MCP 负责应用如何发现、调用它；模型怎样选择搜索词，属于 [Function Calling 与 Agent](/notes/agent-and-function-calling/)一侧的处理过程。连接成功也不代表有权读取所有笔记，权限仍由宿主和服务落实。
 

@@ -19,7 +19,7 @@ mindmap:
 
 ## 缓存管理决定吞吐
 
-大模型服务要同时处理很多请求，但每个请求的 KV Cache 很大，而且随生成长度动态增长、缩短。管理不好就会产生碎片与重复占用，批处理规模被显存卡住。[1]
+大模型服务要同时处理大量请求，但每个请求的 KV Cache 很大，而且随生成长度动态增长、缩短。管理不好就会产生碎片与重复占用，批处理规模被显存卡住。[1]
 
 vLLM 的 PagedAttention 借鉴操作系统的虚拟内存与分页：KV 按 block 管理，逻辑块通过 block table 映射到非连续的物理块，按需分配。vLLM 的博客给出的数字是：KV 浪费低于 4%，而旧系统的碎片与预留浪费可达 60–80%。[2]
 
@@ -27,7 +27,7 @@ vLLM 的 PagedAttention 借鉴操作系统的虚拟内存与分页：KV 按 bloc
 
 同一篇论文报告，在相同延迟下，vLLM 相对 FasterTransformer、Orca 等系统把吞吐提高 2–4 倍；序列越长、模型越大、解码越复杂，收益越明显。[1]
 
-vLLM 博客另有自己的基准：LLaMA-7B 在 A10G、13B 在 A100 上，用 ShareGPT 长度分布采样，相对 Hugging Face Transformers 最高 24 倍、相对 TGI 最高 3.5 倍。[2] 这些数字依赖模型、硬件与请求分布，不能直接当作今天的容量预期。
+vLLM 博客另有自己的基准：LLaMA-7B 在 A10G、13B 在 A100 上，用 ShareGPT（一个公开的多轮对话数据集）长度分布采样，相对 Hugging Face Transformers 最高 24 倍、相对 TGI 最高 3.5 倍。[2] 这些数字依赖模型、硬件与请求分布，不能直接当作今天的容量预期。
 
 前缀缓存是分页之上的一层复用：开启 `enable_prefix_caching` 后，相同前缀的请求可以复用已算好的 KV。它只省 prefill，不省 decode；回答很长或请求之间没有共享前缀时，收益很小。[3]
 
@@ -37,11 +37,11 @@ SGLang 的 RadixAttention 把提示（prompt）与已生成结果的 KV 保存�
 
 SGLang 博客给出 2024 年 1 月的对比：Llama-7B（A10G，TP=1，即张量并行度为 1）与 Mixtral-8x7B（8×A10G，TP=8）上，相对 Guidance 与 vLLM v0.2.5 最高 5 倍吞吐。[4] 论文摘要另报告了最高 6.4 倍，以及用压缩有限状态机加速结构化输出解码。[5]
 
-SGLang 的前端是带 `fork`、`gen`、`choices` 等原语的 DSL，可由解释器或图执行器运行，也能接 OpenAI、Anthropic、Gemini 或本地模型。[4]
+SGLang 的前端是带 `fork`、`gen`、`choices` 等原语（primitive，构成更复杂写法的基本操作）的 DSL（领域特定语言，专为这类任务设计的小语言），可由解释器或图执行器运行，也能接 OpenAI、Anthropic、Gemini 或本地模型。[4]
 
 ## 编译与硬件绑定
 
-TensorRT-LLM 是 NVIDIA 的推理库，当前是 PyTorch 原生实现；旧的 TensorRT engine 后端已移除，不再需要 `trtllm-build` 或 `convert_checkpoint`，可以直接加载 Hugging Face checkpoint。[6]
+TensorRT-LLM 是 NVIDIA 的推理库，当前是 PyTorch 原生实现；旧的 TensorRT engine 后端已移除，不再需要 `trtllm-build` 或 `convert_checkpoint`，可以直接加载 Hugging Face checkpoint（已训练好的模型权重文件）。[6]
 
 它的核心机制是在途批处理（in-flight batching）：把上下文与生成阶段混合批处理，输入需要打包（packed，不留 padding），上下文序列要排在生成序列之前；`max_num_tokens` 从 v0.11 起默认 8192。分块上下文（chunked context）需要分页 KV，块长要是分块大小（block size）的整数倍。官方称它能降低平均首 token 延迟（TTFT），但可能抬高少数请求的 TTFT，建议常开。[7]
 

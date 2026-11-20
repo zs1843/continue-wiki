@@ -1,3 +1,11 @@
+## 2026-11-20 全篇术语二次审计
+
+- 逐篇读完 69 篇（68 篇公开 + 1 篇草稿），按“首次出现是否给出定义”重扫缩写与专有名词，改动 48 篇。
+- 补出定义：Embedding（嵌入）、仅编码器／仅解码器／编码器—解码器、负对数似然、epoch、超参数、偏置项、小批量随机梯度下降、padding、chat template、秩（低秩）、Adam、adapter、闭式关系／重参数化、bf16、校准数据、反量化、计算内核（kernel）、e4m3fn、GGUF、令牌桶、DSL、checkpoint、ShareGPT、BM25、稠密检索、segment、S0／F0 层级、bounding region、Parquet、社区检测、map-reduce、值链接、HotpotQA／FEVER／ALFWorld／WebShop、EM、frontmatter、Pod、Lint、CI、YAML、PR、checkpointer、namespace、广度优先、分布漂移、金标准、上下文窗口、沙箱、护栏、挽具、E2E、trace、COLA、JPA、OpenSpec、GSD 名称、OWASP、OAuth／作用域、模型反演、差分隐私、卷积网络、分类头、VTAB、ImageNet／CIFAR-100、ResNet-50、Inception Score、超分辨率、蒸馏、心智模型、failstate、NIST、SEI、启发式、分类器、滑动窗口、稠密瓶颈。
+- 模糊表述：把“很多请求／很多接口／工具很多”改为可核对的表述；删掉“解析首先决定资料质量”这类与前句重复的判断；给“心智模型”等抽象名词补一句界定。
+- 保留未展开的方法名（GPTQ、AWQ、EAGLE3、MTP、PARD、DFlash、SA、HQQ、TinyChat 等）：正文已说明它们是方法或产品，未读到可支撑全称的来源，不硬写。
+- `npm run build` 通过（68 篇公开、16 张导图 277 个知识点、87 个 HTML、188 个文件清单）；`npm test` 15 项通过。
+
 ## 2026-11-20 术语与模糊表述清理
 
 - 逐篇检查英文缩写与首次出现的术语，给未解释的词补了中文说明：one-hot、Hoeffding 界、LoRA／QLoRA、NF4、RLHF／DPO／SFT、LRU、radix tree、TP／PP／DP／EP／CP、W4A16／W4A8／NVFP4、TF-IDF、HyDE、A2A／SSE／JSON-RPC、GraphRAG／NL2SQL／schema／join、OCR、ViT／CLIP、FID、cross-attention、DTO、CI、CRM、HAX、LLM、endpoint、sigmoid、ground truth。

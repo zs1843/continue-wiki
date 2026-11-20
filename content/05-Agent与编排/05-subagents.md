@@ -57,7 +57,7 @@ You are a code reviewer. When invoked, analyze the code and provide
 specific, actionable feedback on quality, security, and best practices.
 ```
 
-frontmatter 里的 `name`、`description`、`tools`、`model` 决定它叫什么、何时被选中、能用哪些工具、用哪个模型；正文是它自己的系统提示。文档说明子代理只收到这份提示和基本环境信息，不继承主代理的对话——这就是「独立上下文」在产品里的落地方式。[2]
+frontmatter（文件开头由 `---` 包住的那段元数据）里的 `name`、`description`、`tools`、`model` 决定它叫什么、何时被选中、能用哪些工具、用哪个模型；正文是它自己的系统提示。文档说明子代理只收到这份提示和基本环境信息，不继承主代理的对话——这就是「独立上下文」在产品里的落地方式。[2]
 
 使用时由主代理按描述委派，例如「用 code-reviewer 审查这次改动」；子代理返回结论，主代理再汇总。委派得越具体，越不容易和别的子代理重复劳动。
 
