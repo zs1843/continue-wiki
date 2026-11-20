@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 64 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 66 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -115,3 +115,12 @@ OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断�
 | 笔记 | 来源与实际读取范围 |
 | --- | --- |
 | 推理引擎选型 | vLLM：[PagedAttention 论文摘要](https://arxiv.org/abs/2309.06180)（2–4 倍吞吐）；[2023-06-20 博客](https://vllm.ai/blog/2023-06-20-vllm)（block table、KV 浪费低于 4%、60–80%、24 倍／3.5 倍）；[Automatic Prefix Caching](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/automatic_prefix_caching.md) 与 [LoRA](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/lora.md) 全文。SGLang：[LMSYS 2024-01-17 博客](https://www.lmsys.org/blog/2024-01-17-sglang/)（radix tree、1 token 一页、LRU、5 倍与前端 DSL）；[论文摘要](https://arxiv.org/abs/2312.07104)（压缩有限状态机、6.4 倍）。TensorRT-LLM：Overview、Paged Attention/IFB/Scheduler、Speculative Decoding、Quantization、Parallelism 与 TensorRT Backend Removed 页面，2026-11-20 读取，Overview 标注最后更新 2026-11-16。未读：vLLM 连续批处理与投机解码文档、SGLang 路由与结构化输出正文，因此正文不做这些对比 |
+
+## 文档理解与结构化检索（2026-11-20）
+
+新增两篇 04 组笔记。Azure 页面读取到指定章节；GraphRAG 读 README 与官方概览；论文只读摘要。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 文档理解与 OCR | Azure AI Document Intelligence，[Layout model v4.0](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/prebuilt/layout?view=doc-intel-4.0.0)，2026-11-20 读取至 Sections：输入格式、pages／paragraphs／lines／words／selection marks／tables／figures／sections、Markdown 表示与页数、大小、分辨率限制；[Overview](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview?view=doc-intel-4.0.0) 同日读取（页面截断），仅用于版本与模型定位 |
+| 结构化检索 | Microsoft，[GraphRAG README](https://raw.githubusercontent.com/microsoft/graphrag/main/README.md) 全文（索引管线、维护模式、成本提示）；[Indexing Overview](https://microsoft.github.io/graphrag/index/overview/) 与 [Query Overview](https://microsoft.github.io/graphrag/query/overview/) 全文（实体关系、社区摘要、Local／Global／DRIFT／Basic）；[Text-to-SQL 综述](https://arxiv.org/abs/2208.13629) 与 [BIRD](https://arxiv.org/abs/2305.03111v3) 仅读摘要（12,751 对、95 库、40.08% 与 92.96%） |

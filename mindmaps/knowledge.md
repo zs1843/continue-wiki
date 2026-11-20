@@ -107,6 +107,11 @@ slug: knowledge
   - [切分粒度影响召回与上下文](/notes/document-parsing-chunking/#%E5%88%87%E5%88%86%E7%B2%92%E5%BA%A6%E5%BD%B1%E5%93%8D%E5%8F%AC%E5%9B%9E%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%96%87)
   - [给每块补上下文能提升召回](/notes/document-parsing-chunking/#%E7%BB%99%E6%AF%8F%E5%9D%97%E8%A1%A5%E4%B8%8A%E4%B8%8B%E6%96%87)
   - [小知识库可以不切分](/notes/document-parsing-chunking/#%E5%B0%8F%E7%9F%A5%E8%AF%86%E5%BA%93%E5%8F%AF%E4%BB%A5%E4%B8%8D%E5%88%87%E5%88%86)
+- [文档理解与 OCR：让扫描件和表格进入检索](/notes/document-understanding-ocr/)
+  - [解析质量决定检索上限](/notes/document-understanding-ocr/#%E8%A7%A3%E6%9E%90%E8%B4%A8%E9%87%8F%E5%86%B3%E5%AE%9A%E6%A3%80%E7%B4%A2%E4%B8%8A%E9%99%90)
+  - [版面模型输出结构而不是纯文本](/notes/document-understanding-ocr/#%E7%89%88%E9%9D%A2%E6%A8%A1%E5%9E%8B%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%84%E8%80%8C%E4%B8%8D%E6%98%AF%E7%BA%AF%E6%96%87%E6%9C%AC)
+  - [表格与选择标记要保留结构](/notes/document-understanding-ocr/#%E8%A1%A8%E6%A0%BC%E4%B8%8E%E9%80%89%E6%8B%A9%E6%A0%87%E8%AE%B0%E8%A6%81%E4%BF%9D%E7%95%99%E7%BB%93%E6%9E%84)
+  - [页数与分辨率都有上限](/notes/document-understanding-ocr/#%E9%A1%B5%E6%95%B0%E4%B8%8E%E5%88%86%E8%BE%A8%E7%8E%87%E6%9C%89%E4%B8%8A%E9%99%90)
 - [混合检索与查询改写：让召回不只靠向量](/notes/hybrid-retrieval/)
   - [BM25 补上精确词面匹配](/notes/hybrid-retrieval/#bm25-%E8%A1%A5%E4%B8%8A%E8%AF%8D%E9%9D%A2%E5%8C%B9%E9%85%8D)
   - [RRF 按排名合并多路结果](/notes/hybrid-retrieval/#%E7%94%A8-rrf-%E5%90%88%E5%B9%B6%E5%A4%9A%E8%B7%AF%E7%BB%93%E6%9E%9C)
@@ -117,6 +122,11 @@ slug: knowledge
   - [索引更新不是实时的](/notes/retrieval-permissions-updates/#%E7%B4%A2%E5%BC%95%E6%9B%B4%E6%96%B0%E6%9C%89%E5%BB%B6%E8%BF%9F)
   - [删除与失效要和写入一起设计](/notes/retrieval-permissions-updates/#%E5%88%A0%E9%99%A4%E4%B8%8E%E5%A4%B1%E6%95%88%E8%A6%81%E4%B8%80%E8%B5%B7%E8%AE%BE%E8%AE%A1)
   - [权限变化要触发重新索引](/notes/retrieval-permissions-updates/#%E6%9D%83%E9%99%90%E5%8F%98%E5%8C%96%E8%A6%81%E8%83%BD%E9%87%8D%E6%96%B0%E7%B4%A2%E5%BC%95)
+- [结构化检索：GraphRAG 与 NL2SQL](/notes/structured-retrieval/)
+  - [GraphRAG 先建实体关系再摘要](/notes/structured-retrieval/#%E5%85%88%E5%BB%BA%E5%9B%BE%E5%86%8D%E6%91%98%E8%A6%81)
+  - [全局问题与局部问题分开](/notes/structured-retrieval/#%E5%85%A8%E5%B1%80%E4%B8%8E%E5%B1%80%E9%83%A8%E6%9F%A5%E8%AF%A2%E5%88%86%E5%B7%A5%E4%B8%8D%E5%90%8C)
+  - [NL2SQL 生成可执行查询](/notes/structured-retrieval/#%E6%8A%8A%E9%97%AE%E9%A2%98%E5%8F%98%E6%88%90%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9F%A5%E8%AF%A2)
+  - [两条路径都要建模与评估](/notes/structured-retrieval/#%E4%B8%A4%E6%9D%A1%E8%B7%AF%E5%BE%84%E9%83%BD%E8%A6%81%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AF%84%E4%BC%B0)
 
 ## Agent与编排
 

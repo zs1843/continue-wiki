@@ -46,7 +46,7 @@ mindmap:
 
 [Embedding](/notes/embeddings-and-similarity/)把文本变为可比较的表示；[检索与重排序](/notes/retrieval-and-reranking/)从资料库找候选；[RAG](/notes/rag/)把正文证据交给模型生成回答。
 
-工程化环节见[文档解析与切分](/notes/document-parsing-chunking/)、[混合检索与查询改写](/notes/hybrid-retrieval/)、[检索的权限与更新](/notes/retrieval-permissions-updates/)。向量只是检索表示，不能代替原文和出处。
+工程化环节见[文档解析与切分](/notes/document-parsing-chunking/)、[文档理解与 OCR](/notes/document-understanding-ocr/)、[混合检索与查询改写](/notes/hybrid-retrieval/)、[检索的权限与更新](/notes/retrieval-permissions-updates/)；结构化资料见[GraphRAG 与 NL2SQL](/notes/structured-retrieval/)。向量只是检索表示，不能代替原文和出处。
 
 ## 第五步：系统怎样行动、评估与守住边界
 
