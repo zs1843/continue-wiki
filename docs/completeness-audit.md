@@ -59,8 +59,8 @@
 | TTFT 与 TPOT 怎样计算？ | 能 | 推理运行篇：指标怎样算 |
 | 量化怎样省显存、代价是什么？ | 能 | 量化篇：位宽换算与边界 |
 | 超时、重试、熔断怎样配合？ | 能 | 可靠性篇：三态与退避 |
-| 该选 vLLM、SGLang 还是 TensorRT-LLM？ | 不能 | 没有引擎选型篇 |
-| 连续批处理与投机解码是什么？ | 不能 | 只提到批处理影响延迟，没有机制 |
+| 该选 vLLM、SGLang 还是 TensorRT-LLM？ | 能 | 推理引擎选型篇：PagedAttention、RadixAttention、编译与硬件绑定 |
+| 连续批处理与投机解码是什么？ | 能 | 引擎篇：IFB 的 packed 批处理与约束、draft/target 与 EAGLE3／MTP 等方案 |
 | 显存与成本怎样估算？ | 半 | 有 KV Cache 增长方向，没有容量公式与成本模型 |
 
 ## 04 知识与检索

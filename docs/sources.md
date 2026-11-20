@@ -1,6 +1,6 @@
 # 内容来源索引
 
-最近整理日期：2026-11-19。以下记录当前 63 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
+最近整理日期：2026-11-19。以下记录当前 64 篇概念笔记实际使用的资料；每篇正文末尾保留对应参考，关键位置使用编号定位。来源包括书籍节选、方法文章、论文、规范和项目说明，不等同于用户的个人阅读履历。
 
 2026-11-19 收录《Harness工程实战：从零开始驾驭AI软件工程》的口述／粘贴节选，涉及 Subagent、Harness 工程与 Coding Agent。后续通过出版社公开页面核实：张建飞著，人民邮电出版社，2026 年 9 月，第 1 版，ISBN 9787115701800。三代划分、四组核心能力和出题／解题／评判角色依据所提供节选；另在微信读书实际核对第 6.2 节、10.2 节的选定段落，以及第 3.6 节开头的角色示例，未通读全书。新增案例依据作者公开配套仓库快照 `51c6b4ba5c56a6e3b7c344611f03f0d396acaa4a` 的实际文件。公开目录只用于主题定位，不用来推测章节正文。核对范围见 [书籍资料记录](harness-book-sources.md)。
 
@@ -107,3 +107,11 @@ OWASP 三个站点页面在抓取时只返回标题与导航，没有把截断�
 | --- | --- |
 | 交叉熵与困惑度 | Zhang、Lipton、Li、Smola，《Dive into Deep Learning》1.0.3，[§4.1 Softmax Regression](https://d2l.ai/chapter_linear-classification/softmax-regression.html)，2026-11-20 读取 softmax 定义、交叉熵公式 4.1.8、对 logit 的导数 4.1.10，正文读到信息论基础开头；[§9.3 Language Models](https://d2l.ai/chapter_recurrent-neural-networks/language-model.html) 的 Perplexity 一节全文（原始 rst 源）。0.5 概率的换算示例为自拟 |
 | 梯度、过拟合与正则 | 同上，[§5.3 Backpropagation](https://d2l.ai/chapter_multilayer-perceptrons/backprop.html) 全文（链式法则、中间值与显存）；[§4.6 Generalization in Classification](https://d2l.ai/chapter_linear-classification/generalization-classification.html) 全文（测试误差估计、2500／10000／15000 样本、测试集复用与自适应过拟合）；[§3.7 Weight Decay](https://d2l.ai/chapter_linear-regression/weight-decay.html) 全文（L2 惩罚、更新式、L1 对比、200 维与 20 样本示例）。以上均为原始 rst 源，示例数字来自教材 |
+
+## 推理引擎选型（2026-11-20）
+
+新增一篇，对比 vLLM、SGLang 与 TensorRT-LLM。论文与博客只读摘要或正文，官方文档按页面读取；未读到的能力明确不比较。
+
+| 笔记 | 来源与实际读取范围 |
+| --- | --- |
+| 推理引擎选型 | vLLM：[PagedAttention 论文摘要](https://arxiv.org/abs/2309.06180)（2–4 倍吞吐）；[2023-06-20 博客](https://vllm.ai/blog/2023-06-20-vllm)（block table、KV 浪费低于 4%、60–80%、24 倍／3.5 倍）；[Automatic Prefix Caching](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/automatic_prefix_caching.md) 与 [LoRA](https://raw.githubusercontent.com/vllm-project/vllm/main/docs/features/lora.md) 全文。SGLang：[LMSYS 2024-01-17 博客](https://www.lmsys.org/blog/2024-01-17-sglang/)（radix tree、1 token 一页、LRU、5 倍与前端 DSL）；[论文摘要](https://arxiv.org/abs/2312.07104)（压缩有限状态机、6.4 倍）。TensorRT-LLM：Overview、Paged Attention/IFB/Scheduler、Speculative Decoding、Quantization、Parallelism 与 TensorRT Backend Removed 页面，2026-11-20 读取，Overview 标注最后更新 2026-11-16。未读：vLLM 连续批处理与投机解码文档、SGLang 路由与结构化输出正文，因此正文不做这些对比 |

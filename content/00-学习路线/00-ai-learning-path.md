@@ -40,7 +40,7 @@ mindmap:
 
 ## 第三步：推理怎样运行
 
-[推理运行与 KV Cache](/notes/inference-and-kv-cache/)解释 prefill 与 decode 两阶段怎样消耗算力与显存；[量化](/notes/quantization/)讨论用精度换成本；[推理可靠性](/notes/inference-reliability/)处理超时、重试、熔断与降级。
+[推理运行与 KV Cache](/notes/inference-and-kv-cache/)解释 prefill 与 decode 两阶段怎样消耗算力与显存；[量化](/notes/quantization/)讨论用精度换成本；[推理可靠性](/notes/inference-reliability/)处理超时、重试、熔断与降级；落地部署时的引擎差异见[推理引擎选型](/notes/inference-engine-selection/)。
 
 ## 第四步：资料怎样进入系统
 

@@ -81,6 +81,11 @@ slug: knowledge
   - [超时值应从下游延迟推导](/notes/inference-reliability/#%E8%B6%85%E6%97%B6%E6%8C%89%E4%B8%8B%E6%B8%B8%E5%BB%B6%E8%BF%9F%E5%AE%9A)
   - [重试会在链路上放大流量](/notes/inference-reliability/#%E9%87%8D%E8%AF%95%E4%BC%9A%E6%94%BE%E5%A4%A7%E6%B5%81%E9%87%8F)
   - [熔断与降级用来止损](/notes/inference-reliability/#%E7%94%A8%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%8D%E7%BA%A7%E6%AD%A2%E6%8D%9F)
+- [推理引擎选型：vLLM、SGLang 与 TensorRT-LLM](/notes/inference-engine-selection/)
+  - [引擎差异在缓存管理与调度](/notes/inference-engine-selection/#%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86%E5%86%B3%E5%AE%9A%E5%90%9E%E5%90%90)
+  - [分页管理减少 KV 浪费](/notes/inference-engine-selection/#%E5%88%86%E9%A1%B5%E4%B8%8E%E5%85%B1%E4%BA%AB)
+  - [前缀复用与结构化输出](/notes/inference-engine-selection/#%E5%89%8D%E7%BC%80%E5%A4%8D%E7%94%A8%E4%B8%8E%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA)
+  - [编译优化绑定 NVIDIA 硬件](/notes/inference-engine-selection/#%E7%BC%96%E8%AF%91%E4%B8%8E%E7%A1%AC%E4%BB%B6%E7%BB%91%E5%AE%9A)
 
 ## 知识与检索
 
