@@ -1,3 +1,11 @@
+## 2026-11-20 正文底部上一篇／下一篇
+
+- `src/lib/notes.ts` 新增 `orderedNotes` 与 `noteNeighbors`：按侧栏目录顺序（本层笔记在前、子目录随后，层内按 `order`）取相邻两篇，跨分类也连续。
+- `src/layouts/Notebook.astro` 在正文后、回到顶部前渲染 `nav.article-pager`，只对 `/notes/` 路径生效；首页、思维导图、404 不显示。链接带 `rel="prev"`/`rel="next"`，容器加 `data-pagefind-ignore`，避免翻页标题混入搜索索引。
+- 缺一侧时用不可见占位保持“下一篇”仍在右列；移动端（≤720px）改为上下堆叠。
+- 视觉检查：1280 宽桌面页（`tokens-and-tokenization`、`ai-architecture-learning-path`）与 500 宽移动页（`harness-engineering`）实际截图确认；首篇只显示下一篇、末篇只显示上一篇，位置与对齐正常。构建含 68 个笔记页带翻页，导图与 404 页无该区块。
+- `npm run build` 通过（68 篇、87 个 HTML、188 个文件清单），`npm test` 15 项通过，`astro check` 0 错误。
+
 ## 2026-11-20 全篇术语二次审计
 
 - 逐篇读完 69 篇（68 篇公开 + 1 篇草稿），按“首次出现是否给出定义”重扫缩写与专有名词，改动 48 篇。

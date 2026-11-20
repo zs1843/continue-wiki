@@ -14,6 +14,26 @@ export async function publishedNotes() {
 export type Note = Awaited<ReturnType<typeof publishedNotes>>[number];
 
 export type TreeNode = { label: string; key: string; folders: TreeNode[]; notes: Note[] };
+/** 按侧栏目录的显示顺序展开笔记：先列本层笔记，再进入子目录。 */
+export function orderedNotes(notes: Note[]): Note[] {
+  const ordered: Note[] = [];
+  const walk = (node: TreeNode) => {
+    ordered.push(...node.notes);
+    node.folders.forEach(walk);
+  };
+  walk(buildTree(notes));
+  return ordered;
+}
+
+/** 取同一阅读顺序中的前后两篇，用于正文底部翻页。 */
+export function noteNeighbors(notes: Note[], current: string): { prev: Note | null; next: Note | null } {
+  if (!current) return { prev: null, next: null };
+  const ordered = orderedNotes(notes);
+  const index = ordered.findIndex(note => note.data.slug === current);
+  if (index < 0) return { prev: null, next: null };
+  return { prev: ordered[index - 1] ?? null, next: ordered[index + 1] ?? null };
+}
+
 export function buildTree(notes: Note[]): TreeNode {
   const root: TreeNode = { label: '', key: '', folders: [], notes: [] };
   for (const note of notes) {

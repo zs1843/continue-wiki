@@ -2,7 +2,7 @@
 import Directory from '../components/Directory.astro';
 import ReadingOutline from '../components/ReadingOutline.astro';
 import type { Heading } from '../lib/outline.mjs';
-import { buildTree, publishedNotes } from '../lib/notes';
+import { buildTree, noteNeighbors, publishedNotes } from '../lib/notes';
 import { publishedMindmaps } from '../lib/mindmaps';
 import '../styles/global.css';
 interface Props {
@@ -21,6 +21,8 @@ const notes = await publishedNotes();
 const mindmaps = await publishedMindmaps();
 const tree = buildTree(notes);
 const hasOutline = !wide && headings.length > 0;
+const pager = Astro.url.pathname.startsWith('/notes/') ? noteNeighbors(notes, current) : { prev: null, next: null };
+const hasPager = Boolean(pager.prev || pager.next);
 const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.url.pathname, Astro.site) : undefined;
 ---
 <!doctype html>
@@ -114,6 +116,22 @@ const canonical = Astro.site ? new URL(current ? `/notes/${current}/` : Astro.ur
             {updated && <p class="article-meta" data-pagefind-ignore><time datetime={updated}>{updated}</time></p>}
           </header>
           <div class="prose"><slot /></div>
+          {hasPager && (
+            <nav class="article-pager" aria-label="上一篇与下一篇" data-pagefind-ignore>
+              {pager.prev
+                ? <a class="pager-link pager-prev" href={`/notes/${pager.prev.data.slug}/`} rel="prev">
+                    <span class="pager-label">← 上一篇</span>
+                    <span class="pager-title">{pager.prev.data.title}</span>
+                  </a>
+                : <span class="pager-slot" aria-hidden="true" />}
+              {pager.next
+                ? <a class="pager-link pager-next" href={`/notes/${pager.next.data.slug}/`} rel="next">
+                    <span class="pager-label">下一篇 →</span>
+                    <span class="pager-title">{pager.next.data.title}</span>
+                  </a>
+                : <span class="pager-slot" aria-hidden="true" />}
+            </nav>
+          )}
           <footer class="article-footer" data-pagefind-ignore><a href="#content">回到顶部 ↑</a></footer>
         </article>
         {hasOutline && <ReadingOutline headings={headings} />}

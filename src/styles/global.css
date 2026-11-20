@@ -75,3 +75,18 @@ html[data-sidebar-mode='floating'] .drawer-open .sidebar { visibility: visible; 
   .outline-nav a[aria-current='location']{color:var(--green);background:var(--wash);font-weight:550}
   .outline-nav a[aria-current='location']:before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:2px;border-radius:1px;background:var(--green)}
 }
+
+/* 正文底部的上一篇／下一篇：按侧栏目录顺序衔接，跨分类也连续。 */
+.article-pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:52px;padding-top:24px;border-top:1px solid var(--line)}
+.pager-slot{visibility:hidden}
+.pager-link{display:flex;flex-direction:column;gap:5px;min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:#fcfdfb;transition:background .15s,border-color .15s}
+.pager-link:hover{background:#f6f9f3;border-color:#cfdcc7}
+.pager-label{font-size:11px;color:#9aa79a;letter-spacing:.2px}
+.pager-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;font-weight:550;line-height:1.6;color:#3d4b36;overflow-wrap:anywhere}
+.pager-link:hover .pager-title{color:#264a38}
+.pager-next{align-items:flex-end;text-align:right}
+.article-pager + .article-footer{margin-top:22px}
+@media(max-width:720px){
+  .article-pager{grid-template-columns:1fr;gap:10px;margin-top:40px;padding-top:20px}
+  .pager-slot{display:none}
+}
