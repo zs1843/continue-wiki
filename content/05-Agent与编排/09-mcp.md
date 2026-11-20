@@ -53,7 +53,7 @@ mindmap:
 
 ## 线路上长什么样
 
-前面三段交互在协议里是 JSON-RPC 消息。初始化请求带上客户端支持的版本与能力，服务器用自己的版本和能力回应：[3]
+前面三段交互在协议里是 JSON-RPC（一种基于 JSON 的远程调用格式）消息。初始化请求带上客户端支持的版本与能力，服务器用自己的版本和能力回应：[3]
 
 ```json
 {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{"roots":{"listChanged":true}},"clientInfo":{"name":"ExampleClient","version":"1.0.0"}}}

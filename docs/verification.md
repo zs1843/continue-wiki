@@ -1,3 +1,10 @@
+## 2026-11-20 术语与模糊表述清理
+
+- 逐篇检查英文缩写与首次出现的术语，给未解释的词补了中文说明：one-hot、Hoeffding 界、LoRA／QLoRA、NF4、RLHF／DPO／SFT、LRU、radix tree、TP／PP／DP／EP／CP、W4A16／W4A8／NVFP4、TF-IDF、HyDE、A2A／SSE／JSON-RPC、GraphRAG／NL2SQL／schema／join、OCR、ViT／CLIP、FID、cross-attention、DTO、CI、CRM、HAX、LLM、endpoint、sigmoid、ground truth。
+- 把“差很多”“很多请求”一类无关紧要的强度词改为中性表述；保留的“通常”“往往”“可能”是有依据的限定，不作为事实断言。
+- GPTQ、AWQ、EAGLE3、MTP、PARD、DFlash、SA 等方法名保留原名：正文已说明它们是方法或方案，未读取到可支撑展开的来源，不硬写全称。
+- `npm run build` 通过（68 篇、87 个 HTML）；`npm test` 15 项通过。
+
 ## 2026-11-20 顶栏 GitHub 入口
 
 - 在 Notebook 顶栏右侧加入 GitHub 图标，链接到 `https://github.com/zs1843/continue-wiki`，新标签打开并带 `noopener noreferrer`、`aria-label` 与 `title`。

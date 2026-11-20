@@ -15,7 +15,7 @@ mindmap:
     heading: "编译与硬件绑定"
 ---
 
-**推理引擎** 把模型权重、请求调度与显存管理组织成可服务的系统。模型相同，引擎不同，首 token 延迟、吞吐与运维方式会差很多；选型不是选“最快”，而是选与硬件、负载和团队匹配的那一个。
+**推理引擎** 把模型权重、请求调度与显存管理组织成可服务的系统。模型相同，引擎不同，首 token 延迟、吞吐与运维方式会不同；选型不是选“最快”，而是选与硬件、负载和团队匹配的那一个。
 
 ## 缓存管理决定吞吐
 
@@ -33,9 +33,9 @@ vLLM 博客另有自己的基准：LLaMA-7B 在 A10G、13B 在 A100 上，用 Sh
 
 ## 前缀复用与结构化输出
 
-SGLang 的 RadixAttention 把 prompt 与已生成结果的 KV 保存在 radix tree 中，做前缀查找、插入与淘汰，配合 LRU 与缓存感知调度；KV 以 paged layout 存在 GPU 上（1 token 一页），树结构放在 CPU，默认开启，并与 continuous batching、paged attention 兼容。[4]
+SGLang 的 RadixAttention 把提示（prompt）与已生成结果的 KV 保存在基数树（radix tree）中，做前缀查找、插入与淘汰，配合 LRU（最近最少使用）淘汰与缓存感知调度；KV 以分页布局（paged layout）存在 GPU 上（1 token 一页），树结构放在 CPU，默认开启，并与连续批处理（continuous batching）、分页注意力兼容。[4]
 
-SGLang 博客给出 2024 年 1 月的对比：Llama-7B（A10G，TP=1）与 Mixtral-8x7B（8×A10G，TP=8）上，相对 Guidance 与 vLLM v0.2.5 最高 5 倍吞吐。[4] 论文摘要另报告了最高 6.4 倍，以及用压缩有限状态机加速结构化输出解码。[5]
+SGLang 博客给出 2024 年 1 月的对比：Llama-7B（A10G，TP=1，即张量并行度为 1）与 Mixtral-8x7B（8×A10G，TP=8）上，相对 Guidance 与 vLLM v0.2.5 最高 5 倍吞吐。[4] 论文摘要另报告了最高 6.4 倍，以及用压缩有限状态机加速结构化输出解码。[5]
 
 SGLang 的前端是带 `fork`、`gen`、`choices` 等原语的 DSL，可由解释器或图执行器运行，也能接 OpenAI、Anthropic、Gemini 或本地模型。[4]
 
@@ -43,11 +43,11 @@ SGLang 的前端是带 `fork`、`gen`、`choices` 等原语的 DSL，可由解�
 
 TensorRT-LLM 是 NVIDIA 的推理库，当前是 PyTorch 原生实现；旧的 TensorRT engine 后端已移除，不再需要 `trtllm-build` 或 `convert_checkpoint`，可以直接加载 Hugging Face checkpoint。[6]
 
-它的核心机制是 in-flight batching：把 context 与 generation 阶段混合批处理，输入需要打包、不留 padding，context 序列要排在 generation 之前；`max_num_tokens` 从 v0.11 起默认 8192。chunked context 需要 paged KV，块长要是 block size 的整数倍。官方称它能降低平均 TTFT，但可能抬高少数请求的 TTFT，建议常开。[7]
+它的核心机制是在途批处理（in-flight batching）：把上下文与生成阶段混合批处理，输入需要打包（packed，不留 padding），上下文序列要排在生成序列之前；`max_num_tokens` 从 v0.11 起默认 8192。分块上下文（chunked context）需要分页 KV，块长要是分块大小（block size）的整数倍。官方称它能降低平均首 token 延迟（TTFT），但可能抬高少数请求的 TTFT，建议常开。[7]
 
-KV Cache 可以是 paged 或 contiguous，每层一个 cache；投机解码支持 draft/target 结构，以及 EAGLE3、MTP、PARD、DFlash、SA 等方案，draft 与 target 必须共用 tokenizer，dynamic tree 不支持 SWA 与 MLA。[8]
+KV Cache 可以是分页（paged）或连续（contiguous）布局，每层一个缓存；投机解码支持草稿模型与目标模型（draft/target）结构，以及 EAGLE3、MTP、PARD、DFlash、SA 等具体方案；草稿与目标模型必须共用分词器（tokenizer）。[8]
 
-量化覆盖 FP4、FP8（per-tensor／block／row）、FP8 与 NVFP4 的 KV、W4A16 与 W4A8 的 AWQ／GPTQ；NVFP4 的 KV 需要 ModelOpt 离线量化，支持矩阵按模型与 GPU 代际不同。[9] 并行支持 TP、PP、DP、EP、CP 与 Wide-EP；TP 适合小 batch，DP 适合大 batch，attention DP 下 KV 会分区。[10]
+量化覆盖 FP4 与 FP8（4 位／8 位浮点，可按张量、块或行缩放）、FP8 与 NVFP4（NVIDIA 的 FP4 格式）的 KV、W4A16 与 W4A8（权重 4 位、激活 16／8 位）的 AWQ／GPTQ；NVFP4 的 KV 需要 ModelOpt（NVIDIA 的模型优化工具）离线量化，支持矩阵按模型与 GPU 代际不同。[9] 并行支持 TP、PP、DP、EP、CP 等策略（张量、流水线、数据、专家、上下文并行）；TP 适合小批量，DP 适合大批量，在注意力数据并行下，KV 会分区。[10]
 
 ## 选型按硬件负载与运维
 
